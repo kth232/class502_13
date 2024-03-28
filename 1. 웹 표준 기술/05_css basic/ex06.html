@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            /*
+            ul li:first-child {background: #DAD9FF;}
+            ul li:last-child {background: #FFD9FA;}
+
+            ul li:nth-child(1),
+            ul li:nth-child(3),
+            ul li:nth-child(5)
+             {background: #FFA7A7;}  //그룹선택자는 줄개행 가능
+
+             ul li:nth-child(2n+1) {background: #FFA7A7;} //수식으로 홀수번째만 적용
+
+            ul li:nth-of-type(2n+1) {background: #FFA7A7;}
+
+            ul li:not(.menu5) {background: #FFA7A7;}
+            */
+            ul::before {content: 'before';}
+            ul::after {content: 'after';}
+
+        </style>
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+            <li class="menu5">menu5</li>
+            <li>menu6</li>
+            <li>menu7</li>
+            <li>menu8</li>
+            <li>menu9</li>
+            <li>menu10</li>
+            <li>menu11</li>
+        </ul>
+    </body>
+</html>

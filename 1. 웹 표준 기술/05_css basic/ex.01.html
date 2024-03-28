@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            li {background: #C2E2E8;} /* 태그선택자 */
+            .menus {background: #FFFFA1 /*!important;*/}
+            .menu5 {background: #CEF76E;} /* 클래스선택자, 뒤에 작성해서 우선순위 더 높음*/
+            #menu4 {background : #FFD9EC} /* id선택자 */
+        </style>
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li class="menus">menu3</li>
+            <li class="menus" id="menu4" style="background: #C7C4FF;">menu4</li>
+            <!--style 적용 우선순위: style>id>class>all
+                적용 범위가 넓을수록 우선순위 낮아짐-->
+            <li class="menus menu5">menu5</li>
+        </ul>
+    </body>
+</html>

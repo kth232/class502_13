@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            .box{width: 200px; height: 200px; position: absolute;}
+            .box1 {background: #FFE08C; z-index: 1;}
+            .box2 {background: #B2CCFF; z-index: 2; margin:50px;}
+            .box3 {background: #FFC19E; z-index: 0; margin:100px;} /*숫자가 높을수록 앞에 배치*/
+        </style>
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div> <!--아래쪽에 있는게 앞에 배치됨-->
+        </div>
+    </body>
+</html>

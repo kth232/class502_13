@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            /*ul li span {color: #6799FF;}*/ /*조상 자손 선택자*/
+            ul li {background: #C7C4FF;}
+            ol li {background: #FFFFA1;}
+            ul > li > span {color:#FF73B8;} /*부모자식 선택자: 바로 아래에 있는 요소에만 적용*/
+        </style>
+        <ul>
+            <li class="menus">
+                <span>menu1</span>
+                <ol>
+                    <li>submenu1</li>
+                    <li>
+                        <span>submenu2</span>
+                    </li>
+                    <li>submenu3</li>
+                </ol>
+                </li>
+            <li>menu2</li>
+            <li>menu3</li>
+        </ul>
+        <ol>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+        </ol>
+    </body>
+</html>

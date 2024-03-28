@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style> 
+            input[type="checkbox"]:checked+label {background: #B2CCFF;}
+            /* 타입이 체크박스인 태그에 체크된 상태일 때 바로 옆에 있는 label에 스타일 적용*/
+            input[type=text]:focus {background:#B2CCFF;}
+            .box {width:100px; height: 50px;
+                background: #DAD9FF;
+                transition: all 1s;} /*애니메이션 효과*/
+            .box:hover {width:200px; height: 100px;} /*마우스를 올렸을 때 크기 변화*/
+        </style>
+
+        <input type="checkbox" id="check">
+        <label for="check">click!</label>
+        <br>
+        <input type="text" id="text">
+        <br>
+        <div class="box"></div>
+    </body>
+</html>

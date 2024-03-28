@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <h1>SIGN UP!</h1>
+        <form name="signup" action="ex02.html" method="post" autocomplete="off">
+            <input type="hidden" name="node" value="join">
+            <fieldset>
+                <legend>USER INFOMATION</legend>
+                <dl>
+                    <dt>USER NAME</dt>
+                    <dd>
+                        <input type="text" name="userNm" autofocus required>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>ID</dt>
+                    <dd>
+                        <input type="text" name="userId" required minlength="4">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>PASSWORD</dt>
+                    <dd>
+                        <input type="password" name="userPw" required minlength="6">
+                        <!--type="password"는 입력한 텍스트가 *표로 나타남"-->
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>PASSWORD2</dt>
+                    <dd>
+                        <input type="password" name="confirmPw" placeholder="PASSWORD CORFIRM">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>EMAIL</dt>
+                    <dd>
+                        <input type="email" name="email">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>BIRTHDAY</dt>
+                    <dd>
+                        <input type="date" name="birthday">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>HOBBY</dt>
+                    <dd>
+                        <!--label로 감싸면 텍스트 클릭으로도 선택 가능-->
+                        <label> 
+                        <input type="checkbox" name="hobby" value="hb1">HOBBY1
+                        </label>
+                        <label>
+                        <input type="checkbox" name="hobby" value="hb2">HOBBY2
+                        </label>
+                        <label>
+                        <input type="checkbox" name="hobby" value="hb3">HOBBY3
+                        </label>
+                        <!--checkbox, radio처럼 범주화되어 있다면 name 속성은 동일하게 입력할 것!
+                            value 속성은 필수로 설정해야함!-->
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>FABORITE COLOR</dt>
+                    <dd>
+                        <input type="color" name="color">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>LOCATION</dt>
+                    <dd>
+                        <datalist id="lacations">
+                            <option value="seoul city" label="seoul"></option>
+                            <option value="incheon city" label="incheon"></option>
+                            <option value="gimpo city" label="gimpo"></option>
+                        </datalist>
+                        <input type="text" name="location" list="lacations">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>IMAGE BUTTON</dt>
+                        <dd>
+                            <input type="image" name="imgbt" src="../03/images/river.jpg" alt="submit!" width="100" height="70">
+                        </dd>
+                </dl>
+                <dl>
+                    <dt>FILE UPLOAD</dt>
+                        <dd>
+                            <input type="file" name="profile" multiple>
+                        </dd>
+                </dl>
+        </fieldset>
+        <fieldset>
+            <legend>SCHOOL INFOMATION</legend>
+                <dl>
+                    <dt>MAJOR</dt>
+                    <dd>
+                        <select name="major" size="3" multiple>
+                            <optgroup label="computer science">
+                                <option value="computer" selected>computer</option>
+                                <option value="machine">machine</option>
+                            </optgroup>
+                            <optgroup label="language">
+                                <option value="english">english</option>
+                                <option value="korean">korean</option>
+                            </optgroup>
+                        </select>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>GRADE</dt>
+                    <dd>
+                        <!--병렬도 가능, id, for 속성으로 input, label 태그 연결 필수-->
+                        <input type="radio" name="grade" id="grade1" value="gd1" checked>
+                        <label for="grade1">GRADE1</label>
+                        <input type="radio" name="grade" id="grade2" value="gd2">
+                        <label for="grade2">GRADE2</label>
+                        <input type="radio" name="grade" id="grade3" value="gd3">
+                        <label for="grade3">GRADE3</label>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>CLASS</dt>
+                    <dd>
+                        <input type="number" name="class" min="1" max="10">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>SATISFACTION</dt>
+                    <dd>1
+                        <input type="range" name="comfort" min="1" max="5" step="1">5
+                    </dd>
+                </dl>
+                <dl>
+                <dl>
+                    <dt>OPNION</dt>
+                <textarea placeholder="please write your opnion free!" cols="50" rows="5"></textarea>
+                </dl>
+        </fieldset>
+            <!-- input으로도 초기화, 제출 버튼 표현이 가능하지만 버튼 태그가 더 심플함
+            <input type="submit" value="sign up">
+            <input type="reset" value="reset">
+            -->
+          <button type="reset">RESET</button>
+          <button type="submit">SIGN UP</button>
+        </form>
+        <progress max="100" value="70" min="10">progress</progress>
+        <meter max="100" value="70" min="10">meter</meter>
+    </body>
+</html>

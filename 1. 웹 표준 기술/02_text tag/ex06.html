@@ -1,0 +1,46 @@
+<!DOCTYPE htmel>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <figcaption>1학년 1반</figcaption>
+        <table border="1">
+            <colgroup>
+                <col style="width: 50px"> <!--첫번째 열-->
+                <col span="3" style="width: 100px"> <!--2번째~4번째 열-->
+            </colgroup>
+            <caption>성적표</caption>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>korean</th>
+                    <th>english</th>
+                    <th>math</th>
+                    <th>memo2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>kim</td>
+                    <td align="center">90</td>
+                    <td align="center">80</td>
+                    <td align="center">95</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td>lee</td>
+                    <td>100</td>
+                    <td>90</td>
+                    <td>85</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>memo</td>
+                    <td colspan="4"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>

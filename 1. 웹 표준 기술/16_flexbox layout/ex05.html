@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul {
+                list-style: none;
+                margin:0;
+                padding:0;
+                height:100px;
+                border: 1px solid #000;
+                display: flex;
+            }
+            ul li:nth-of-type(4n+1) {background: #FFC19E;}
+            ul li:nth-of-type(4n+2) {background: #B2CCFF;}
+            ul li:nth-of-type(4n+3) {background: #FFE08C;}
+            ul li:nth-of-type(4n) {background: #CEF279;}
+
+            .flex1 {align-items: stretch;} /*12-13시 수업 보완*/
+            .flex1 li:nth-of-type(4) {align-self: center;}
+            
+            .flex2 {align-items: flex-start;}
+            .flex3 {align-items: flex-end;}
+            .flex4 {align-items: center;}
+        </style>
+
+        <h1>stretch</h1>
+        <ul class="flex1">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+        </ul>
+
+        <h1>flew-start</h1>
+        <ul class="flex2">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+        </ul>
+
+        <h1>flew-end</h1>
+        <ul class="flex3">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+        </ul>
+
+        <h1>center</h1>
+        <ul class="flex4">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+        </ul>
+    </body>
+</html>

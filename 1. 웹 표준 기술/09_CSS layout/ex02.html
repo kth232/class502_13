@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul {
+                list-style: none; /*리스트 기본 글머리 기호 제거, 들여쓰기 제거*/
+                margin:0; padding:0;
+            }
+            li {float: left;} /*왼쪽 배치*/
+            /*
+            span.clear {display:block; clear:left;} //span태그 block레벨로 바꾸고 float의 영향 제거
+            // span.clear ->span 태그의 클래스 또는 id로 범위 축소
+            */
+            ul::after{content:''; clear:left; display: block;} /*가상 클래스는 content를 꼭 추가해야 적용됨*/
+        </style>
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+        </ul>
+        <!--<span class="clear"></span>-->
+        <div>content..</div> <!--float의 영향을 받음-->
+    </body>
+</html>

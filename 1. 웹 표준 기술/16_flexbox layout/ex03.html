@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul {
+                list-style: none;
+                margin:0;
+                padding:0;
+                height:100px;
+                border: 1px solid #000;
+            }
+            .flex1 li {width: 0;} /*전체 너비를 0으로 맞추고 flew-grow를 하면 정확하게 균등배분됨*/
+            ul li:nth-of-type(3n+1) {background: #FFC19E;}
+            ul li:nth-of-type(3n+2) {background: #B2CCFF;}
+            ul li:nth-of-type(3n) {background: #FFE08C;}
+
+            .flex1 {display: flex;}
+            .flex1 li:nth-of-type(1) {flex-grow: 1;}
+            .flex1 li:nth-of-type(2) {flex-grow: 1;} /* 남은 여백에서 비율별로 전체 칸 1/3만큼 배분함*/
+            .flex1 li:nth-of-type(3) {flex-grow: 1;}
+        </style>
+        <ul class="flex1">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+        </ul>
+    </body>
+</html>
