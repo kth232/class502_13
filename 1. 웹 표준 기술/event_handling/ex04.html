@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                const linkEl= document.getElementById('link');
+                linkEl.addEventListener('click', function(e) {
+                    e.preventDefault(); //기본 동작 취소
+                    console.log("click");
+                    console.log('this: ', this);
+                    this.style="background: orange;";
+                });
+                const divEl = document.getElementById('div');
+                divEl.addEventListener('click', function(e) {
+                    console.log('e.target', e.target); //이벤트를 발생시킨 요소: <span>
+                    console.log('e.currentTarget', e.currentTarget); //이벤트가 등록된 요소: <div> 
+                        console.log('this', this); //e.currentTarget
+                    });
+            });
+        </script>
+        <a href="https://www.naver.com" id="link">naver</a>
+        <br>
+        <div id="div">
+            <span>click</span>
+        </div>
+    </body>
+</html>

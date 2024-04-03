@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            .box {padding: 70px;}
+            .box1 {background: #FFA7A7;}
+            .box2 {background: #FFE08C;}
+            .box3 {background: #B2CCFF;}
+        </style>
+        <script>
+            window.addEventListener('DOMContentLoaded', function() {
+                const box1 = document.querySelector('.box1');
+                const box2 = document.querySelector('.box2');
+                const box3 = document.querySelector('.box3');
+                box1.addEventListener('click', function() {
+                    console.log('box1');
+                }); //캡처링 단계/클릭 전파, 버블링 단계
+                box2.addEventListener('click', function() {
+                    console.log('box2');
+                }, true); //캡처링 단계, 클릭 전파/ 버블링 단계
+                box3.addEventListener('click', function(e) {
+                    e.stopPropagation(); //이벤트 전파 취소
+                    console.log('box3'); 
+                }); //타겟 단계-이벤트 실행
+            });
+        </script>
+        <div class="box box1">
+            box1
+            <div class="box box2">
+                box2
+                <div class="box box3">
+                    box3
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

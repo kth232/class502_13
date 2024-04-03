@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            const person = {
+                name:'kim',
+                age: 40,
+                showInfo() {
+                    console.log(this);
+                }, 
+                handleEvent() {// person
+                    console.log('handleEvent', this);
+                }
+            };
+
+            window.addEventListener("DOMContentLoaded", function() {
+
+                function handleClick() {
+                    console.log(this);
+                }
+
+                handleClick = handleClick.bind(person);
+
+                const buttonEl = document.getElementById('button');
+                // buttonEl.addEventListener('click', handleClick);
+
+                /*
+                buttonEl.addEventListener('click', function() {
+                    person.showInfo();
+                });
+                */
+               buttonEl.addEventListener('click', person); //person.handleEvent
+            });
+
+        </script>
+         <button type="button" id="button">click</button>
+    </body>
+</html>

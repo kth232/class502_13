@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.onload = function() {
+                const buttonEl = document.getElementById('button');
+                buttonEl.onclick =  function() {
+                    alert('click1');
+                };
+            }
+            
+            /*
+            window.addEventListener('DOMContentLoaded', function () {
+                const buttonEl = document.getElementById('button');
+                buttonEl.onclick =  function() {
+                    alert('click1');
+                };
+                buttonEl.onclick = function() {
+                    alert('click2'); //마지막 걸로 대체되어 오류 발생 가능성
+                }
+            });
+            */
+        </script>
+        <button type="button" id="button">click</button>
+        <script>
+            window.onload = function() {
+                console.log('different logic..')
+            }
+        </script>
+    </body>
+</html>
