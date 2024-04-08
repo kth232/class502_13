@@ -1,0 +1,16 @@
+.wrapper {
+    padding: 20px;
+    background: black;
+    color:white;
+    font-size: 2rem;
+
+
+    .highlight {
+        color: #F2CB61;
+        font-weight: 700;
+    }
+}
+:global .commonColor {
+    color: #6799FF;
+}
+

@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import LifeCycle from './components/LifeCycle';
-
+import Average from './components/Average';
 const App = () => {
-  return <LifeCycle mode="even" />;
+  return <Average />;
 };
 
 export default App;
