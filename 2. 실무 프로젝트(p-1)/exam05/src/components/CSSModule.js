@@ -1,6 +1,8 @@
 import styles from './CSSModule.module.scss';
 import { useState } from 'react';
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
+
+const cx= classNames.bind(styles); //bind로 this의 범위를 바꿔서 새로운 함수를 만듦
 
 const CSSModule = () => {
   const [visible, setVisible] = useState(false);
@@ -11,7 +13,7 @@ const CSSModule = () => {
         <span className="commonColor">안녕하세요</span>!!
         <span className={styles.highlight}>반갑습니다.</span>
       </div>
-      <div className={classNames('menus', ['cls1', 'cls2'], { on: visible })}>
+      <div className={cx('menus', ['cls1', 'cls2'], { on: visible })}>
         menu
       </div>
       <button type="button" onClick={() => setVisible(!visible)}>
