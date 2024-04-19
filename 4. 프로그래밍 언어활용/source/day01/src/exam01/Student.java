@@ -12,7 +12,7 @@ public class Student {
     }
 
     public static void main(String[] args) {
-        Student s1 = new Student();
+        Student s1 = new Student(); //s1=지역변수
         s1.id = 20240101; //메모리를 할당받고 실체가 된 객체=인스턴스
     }
 }
