@@ -2,7 +2,7 @@ package exam02;
 
 public class Student {
     private static int id; //정적 변수
-    private String name;
+    private String name="lee";
     private String subject;
 
     public Student(int id, String name, String subject) {
@@ -13,6 +13,8 @@ public class Student {
     public static void staticMethod() { //객체와 상관없이 사용 가능, this 지역변수x->객체의 자원 접근x
         //정적 자원만 접근 가능(static 변수, 메서드)
         System.out.println("static method");
+        //this.name = "이이름";
+        //this.instanceMethod();
         id=1000;
     }
 
