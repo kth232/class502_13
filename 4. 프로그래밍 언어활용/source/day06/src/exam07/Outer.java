@@ -5,6 +5,7 @@ public class Outer {
     static int num3 = 40;
 
     public void method() {
+        
     }
 
     class Inner { //인스턴스 내부 클래스
