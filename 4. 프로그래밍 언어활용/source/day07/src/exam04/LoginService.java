@@ -1,8 +1,8 @@
 package exam04;
 
 public class LoginService {
-    public void login(String userId, String userPw) throws UserIdException, UserPwException { //함수 구분 문구
-        // 상황에 맞게 예외 처리할 수 있게 전가시킴
+    public void login(String userId, String userPw) throws UserIdException, UserPwException {
+        // 메소드를 사용하는 곳에서 상황에 맞게 예외 처리할 수 있게 전가시킴
         // userId - user01, userPw = 123456
         try {
             if (!userId.equals("user01")) {
@@ -14,6 +14,6 @@ public class LoginService {
             System.out.println("로그인 성공!");
         } catch (UserIdException | UserPwException e) {
             System.out.println(e.getMessage());
-        }
+        } //로직 한정=->후속 처리 어려움
     }
 }
