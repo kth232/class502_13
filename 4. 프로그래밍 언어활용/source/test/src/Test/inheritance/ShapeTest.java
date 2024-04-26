@@ -11,6 +11,6 @@ public static void main(String[] args) {
 
     for(Shape s : list){
         s.draw();
-    }
+        }
     }
 }
