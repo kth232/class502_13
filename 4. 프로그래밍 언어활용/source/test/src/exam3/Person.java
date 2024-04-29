@@ -14,7 +14,8 @@ public class Person {
         String message = sCoffee.brewing(4000);
         if(message != null) {
             this.money -= money;
-            System.out.println(name + "님이" + money +"으로"  + message);
+            System.out.println(name + "님이 " + money +"원으로 "  + message);
+            System.out.println("잔액은 "+this.money+"원입니다.");
         }
     }
 
@@ -22,7 +23,8 @@ public class Person {
         String message = bCoffee.brewing(4500);
         if(message != null) {
             this.money -= money;
-            System.out.println(name + "님이" + money +"으로"  + message);
+            System.out.println(name + "님이 " + money +"원으로 "  + message);
+            System.out.println("잔액은 "+this.money+"원입니다.");
         }
     }
 }
