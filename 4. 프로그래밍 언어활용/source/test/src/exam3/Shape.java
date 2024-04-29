@@ -1,4 +1,4 @@
-package Test.inheritance;
+package exam3;
 
 class Shape {
     public void draw() {

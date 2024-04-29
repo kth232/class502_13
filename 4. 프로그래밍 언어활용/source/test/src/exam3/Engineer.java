@@ -1,4 +1,4 @@
-package Test.inheritance;
+package exam3;
 
 public class Engineer extends Employee{
     private String skillset;

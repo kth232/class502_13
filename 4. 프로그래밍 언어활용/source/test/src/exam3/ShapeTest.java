@@ -1,4 +1,4 @@
-package Test.inheritance;
+package exam3;
 
 import java.util.ArrayList;
 
