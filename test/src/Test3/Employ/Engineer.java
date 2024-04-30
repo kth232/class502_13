@@ -1,8 +1,7 @@
-package exam3;
+package Test3.Employ;
 
 public class Engineer extends Employee{
     private String skillset;
-
 
     //왜?
     public Engineer(String name) {

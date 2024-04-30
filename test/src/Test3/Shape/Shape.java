@@ -1,4 +1,4 @@
-package exam3;
+package Test3.Shape;
 
 class Shape {
     public void draw() {

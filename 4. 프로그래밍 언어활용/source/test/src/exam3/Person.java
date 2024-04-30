@@ -21,10 +21,10 @@ public class Person {
 
     public void buyBeanCoffee(BeanCoffee bCoffee, int money) {
         String message = bCoffee.brewing(4500);
-        if(message != null) {
+        if (message != null) {
             this.money -= money;
-            System.out.println(name + "님이 " + money +"원으로 "  + message);
-            System.out.println("잔액은 "+this.money+"원입니다.");
+            System.out.println(name + "님이 " + money + "원으로 " + message);
+            System.out.println("잔액은 " + this.money + "원입니다.");
         }
     }
 }

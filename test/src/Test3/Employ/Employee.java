@@ -1,4 +1,4 @@
-package exam3;
+package Test3.Employ;
 
 public class Employee {
     public String name;
