@@ -11,5 +11,12 @@ public class CoffeeTest {
         kim.buyStarCoffee(starCoffee, 4000);
         kim.buyBeanCoffee(beanCoffee, 4500);
 
+
+        Person lee = new Person("lee", 20000);
+        starCoffee = new StarCoffee();
+        beanCoffee = new BeanCoffee();
+
+        lee.buyStarCoffee(starCoffee, 4000);
+        lee.buyBeanCoffee(beanCoffee, 4500);
     }
 }
