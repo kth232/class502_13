@@ -9,7 +9,7 @@ public class Ex05 {
         long stime = System.currentTimeMillis(); //1/1000초 단위로 작업 시작 시간 확인
         try (FileInputStream fis = new FileInputStream("specs.zip");
              FileOutputStream fos = new FileOutputStream("specs_copied.zip")){
-            while(fis.available()>0){
+            while(fis.available() > 0){
                 fos.write(fis.read()); //1바이트씩 읽고 쓰기->4초 정도 소요됨
             }
         } catch (IOException e) {
