@@ -9,7 +9,7 @@ public class DecorateCalculator implements Calculator{
     public long factorial(long num) {
         long stime = System.nanoTime(); //cal1 시작시간, 공통 추가 기능
         try {
-            long result = calculator.factorial(num); //핵심 기능을 대신 수행
+            long result = calculator.factorial(num); //핵심 기능을 대신 수행, 외부에서 받아옴
             return result;
         } finally { //finally를 사용해서 return 이후에도 코드 사용
             long etime = System.nanoTime(); //공통 추가 기능
