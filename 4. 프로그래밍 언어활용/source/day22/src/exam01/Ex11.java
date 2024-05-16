@@ -15,11 +15,13 @@ public class Ex11 {
             //컬렉션 형태로 저장
             List<Book> books = (List <Book>)data.get("books");
             String str = (String)data.get("str");
-
+            Book book1 = (Book)data.get("book1");
+            Book book2 = (Book)data.get("book2");
 
             books.forEach(System.out::println);
             System.out.println(str);
-
+            System.out.println(book1);
+            System.out.println(book2);
         } catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
