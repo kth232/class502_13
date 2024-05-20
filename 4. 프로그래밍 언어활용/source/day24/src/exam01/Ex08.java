@@ -43,8 +43,9 @@ class Ex08_1 implements Runnable {
             if (!suspended) {//일시정지 상태 통제
                 System.out.println(th.getName()); //스레드명 출력
                 try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e){} //시간 지연 취소?
+                    Thread.sleep(1000); // 다음 일시정지 주기 때까지 대기하다가 멈춤
+                } catch (InterruptedException e){}
+                //시간 지연 취소시킴->바로 반응하도록 함->사용성 증가
             }
         }
     }
