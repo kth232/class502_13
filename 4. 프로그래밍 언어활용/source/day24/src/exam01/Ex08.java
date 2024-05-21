@@ -44,8 +44,11 @@ class Ex08_1 implements Runnable {
                 System.out.println(th.getName()); //스레드명 출력
                 try {
                     Thread.sleep(1000); // 다음 일시정지 주기 때까지 대기하다가 멈춤
-                } catch (InterruptedException e){}
-                //시간 지연 취소시킴->바로 반응하도록 함->사용성 증가
+                } catch (InterruptedException e){ //시간 지연 취소시킴->바로 반응하도록 함->사용성 증가
+                    System.out.println("interrupted");
+                }
+            } else { //일시정지 상태->다른 스레드로 바로 작업 양보
+                th.yield();
             }
         }
     }
@@ -56,6 +59,8 @@ class Ex08_1 implements Runnable {
 
     public void suspend() {
         suspended = true;
+        th.interrupt();
+        System.out.println("suspend-interrupted");
     }
 
     public void resume() {
@@ -64,5 +69,6 @@ class Ex08_1 implements Runnable {
 
     public void stop() {
         stopped = true;
+        System.out.println("stop-interrupted");
     }
 }
