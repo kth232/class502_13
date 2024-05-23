@@ -11,10 +11,7 @@
         <result column="MOBILE" property="mobile" />
         <result column="REG_DT" property="regDt" />
     </resultMap>
-    <select id="selectBlog" resultType="Blog">
-        select * from Blog where id = #{id}
-    </select>
-    <select id="getList" resultType="exam01.Member"><!--id 지정 필수!, DB필드와 컬럼명 동일해야 매핑됨-->
+    <select id="getList" resultType="memberMap"><!--id 지정 필수!, DB필드와 컬럼명 동일해야 매핑됨-->
         SELECT * FROM MEMBER <!--; 쓰면 안됨-->
     </select>
     <!--
@@ -24,5 +21,8 @@
     <insert id="">
 
     </insert>
+    <delete>
+
+    </delete>
     -->
 </mapper>

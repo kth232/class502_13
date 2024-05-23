@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class Ex03 {
 
     /* DB 연결 URl, 계정 */
-    private String url = "jdbc:oracle:thin:@localhost:1521:XE";
+    private String url = "jdbc:oracle:thin:@localhost:1522:XE";
     private String user = "STUDY";
     private String password = "oracle";
 
@@ -53,7 +53,7 @@ public class Ex03 {
 
         /*DB 연결 설정 S*/
         ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-        ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
+        ds.setUrl("jdbc:oracle:thin:@localhost:1522:XE");
         ds.setUsername("STUDY");
         ds.setPassword("oracle");
         /*DB 연결 설정 E*/
@@ -80,7 +80,7 @@ public class Ex03 {
         /*연결 설정 S*/
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-        config.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:XE");
+        config.setJdbcUrl("jdbc:oracle:thin:@localhost:1522:XE");
         config.setUsername("STUDY");
         config.setPassword("oracle");
         /*연결 설정 E*/

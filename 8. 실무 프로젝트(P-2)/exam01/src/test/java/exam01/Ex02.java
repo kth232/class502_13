@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ex02 {
-    private String url = "jdbc:oracle:thin:@Localhst: 1521:XE";
+    private String url = "jdbc:oracle:thin:@Localhost:1522:XE";
     private String user = "STUDY";
     private String password = "oracle";
     @BeforeAll //모든 테스트 메서드 호출 전 한번만 실행-공통 초기화
@@ -66,7 +66,7 @@ public class Ex02 {
         String userNm = "USER04";
         String mobile = "01000000000";
         
-        String sql = "INSERT INTO MEMBER(USER_NO, USER_ID, USER_PW, USER_NM, MOBILE) VALUES (SEQ_MEMBER, NEXTVAL, ?, ?, ?, ?)";
+        String sql = "INSERT INTO MEMBER(USER_NO, USER_ID, USER_PW, USER_NM, MOBILE) VALUES (SEQ_MEMBER.NEXTVAL, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(url, user, password);
             PreparedStatement pstmt = conn.prepareStatement(sql, new String[] {"USER_NO"}) //시퀀스 번호를 배열로 가져옴
         ) {
