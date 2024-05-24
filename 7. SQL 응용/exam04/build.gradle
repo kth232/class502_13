@@ -1,0 +1,32 @@
+import java.lang.annotation.Annotation
+
+plugins {
+    id 'java'
+}
+
+group = 'org.choonang'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 17
+
+ext {
+    lbversion = '1.18.32' //전역변수
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def version  = '1.18.32' //지역변수
+    compileOnly "org.projectlombok:lombok:$version"
+    annotationProcessor "org.projectlombok:lombok:$version" //annotation 기반으로 설정할 것
+    testCompileOnly "org.projectlombok:lombok:$version"
+    testAnnotationProcessor "org.projectlombok:lombok:$version" //테스트에서도 사용하려면 별도로 정의해야 함
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
