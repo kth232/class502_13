@@ -56,7 +56,7 @@
         <where>
             <!--콤마로 구분-->
             <foreach item="item" index="index" collection="list"
-                open="USER_ID_IN(" close=")" separator=",">
+                open="USER_ID_IN (" close=")" separator=",">
                 #{item}
             </foreach>
         </where>
