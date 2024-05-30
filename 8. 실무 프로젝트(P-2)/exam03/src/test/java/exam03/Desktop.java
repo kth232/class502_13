@@ -19,7 +19,7 @@ public class Desktop {
 
     public void run() {
         body.run();
-        // monitor, body, keyboard, mouse 등 구성객체를 활용
+        // monitor, body, keyboard, mouse 등 구성 객체를 활용
         // desktop객체는 구성 객체 변화에 영향을 받는 관계
         // ->통제 필요->캡슐화: 폐쇄
     }
