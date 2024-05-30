@@ -1,7 +1,5 @@
 package exam03;
 
-import javax.management.monitor.Monitor;
-
 public class Desktop {
     private Monitor monitor;
     private Body body;
