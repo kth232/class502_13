@@ -44,6 +44,9 @@ public class Server {
 
     public void start() {
 
+        // 소켓 연결 상태 체크
+        monitoring();
+
         while(true) {
             try {
                 Socket socket = serverSocket.accept();
@@ -166,10 +169,13 @@ public class Server {
                 clients.values().forEach(s -> output(s, data));
 
             } else if (to.equals("request_users")){ //모든 접속자 목록
-                    to = data.getFrom(); //요청 정보는 요청한 사용자에게 반송
+                to = data.getFrom(); //요청 정보는 요청한 사용자에게 반송
 
                 String message = clients.keySet().stream().collect(Collectors.joining("||"));
                 data.setMessage(message);
+
+                Socket s = clients.get(to);
+                output(s, data);
 
             } else if (to.equals("request_exit")) { //접속 종료
                 String from = data.getFrom();

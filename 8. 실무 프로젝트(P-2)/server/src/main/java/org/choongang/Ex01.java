@@ -36,7 +36,7 @@ public class Ex01 {
                 while(true) {
                     System.out.print("message: ");
                     String message = sc.nextLine(); //socketdata 형태로 담아서 전송
-                    SocketData data = new SocketData("user01", "request_users", message, LocalDateTime.now());
+                    SocketData data = new SocketData("user01", "all", message, LocalDateTime.now());
                     String json = om.writeValueAsString(data);
                     dos.writeUTF(json);
             } //while

@@ -35,10 +35,10 @@ public class Ex03 {
                 System.out.print("전송: ");
                 String to = sc.nextLine();
 
-                System.out.print("메세지: ");
+                System.out.print("message: ");
                 String message = sc.nextLine();
 
-                SocketData data = new SocketData("user02", to, message, LocalDateTime.now());
+                SocketData data = new SocketData("user03", to, message, LocalDateTime.now());
                 String json = om.writeValueAsString(data);
 
                 dos.writeUTF(json);
