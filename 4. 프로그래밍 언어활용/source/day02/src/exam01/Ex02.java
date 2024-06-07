@@ -14,7 +14,7 @@ public class Ex02 {
         int result = n1 + n2; // 함수 실행 시 스택 영역에서 메모리 할당 받음(임시 메모리이기 때문에 연산 종료 시 메모리 제거=자원 해제)
         return result; //return: 함수가 연산을 끝냄
     }
-    public  static int calc (int x) {
+    public static int calc (int x) {
         int y = x * 2 + 1;
         return y;
     }
