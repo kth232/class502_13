@@ -5,14 +5,16 @@ public class Student {
     String name; //이름
     String subject; //과목
 
-    public Student() { //생성자 오버로드
-        id = 202400;
-        name = "kim";
+    public Student() { //생성자 함수, 생성자 오버로드 ->객체 생성이 목적이기 때문에 반환값 정의 x
+        // 객체의 주소값을 반환함
+        // 객체가 생성된 이후 실행할 코드
+        id = 202400; //멤버변수의 초기화를 주로 정의함
+        name = "first";
         subject = "major";
     }
 
     public Student(int _id, String _name, String _subject) { //띄어쓰기 주의, 지역변수-스택에 할당
-        //기본 생성자(default 생성자), 생성자는 필수로 있어야 하는 함수이기 때문에 별도 입력 없을 시 자동으로 만들어짐, 내부적으로 객체 정의되어 있음음
+        //기본 생성자(default 생성자) 함수, 생성자는 필수로 있어야 하는 함수이기 때문에 별도 입력 없을 시 자동으로 만들어짐, 내부적으로 객체 정의되어 있음
         // 객체가 생성된 이후 실행할 코드
         // 실행 시점? id, name, subject에 공간을 할당 받은 상태
         //System.out.println("객체 생성 이후 실행됨");
