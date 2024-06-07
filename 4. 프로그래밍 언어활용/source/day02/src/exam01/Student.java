@@ -6,9 +6,9 @@ public class Student {
     String subject; //과목
 
     public Student(){ //생성자 오버로드
-        id=2024;
-        name="na";
-        subject="major";
+        id = 2024;
+        name = "kim";
+        subject = "major";
     }
 
     public Student(int _id, String _name, String _subject) { //띄어쓰기 주의, 지역변수-스택에 할당
@@ -17,9 +17,9 @@ public class Student {
         // 실행 시점? id, name, subject에 공간을 할당 받은 상태
         //System.out.println("객체 생성 이후 실행됨");
         // 인스턴스 변수의 초기화 작업을 주로 수행한다.
-        id=_id;
-        name=_name; //힙 영역에 할당
-        subject=_subject; //할당받는 변수로 초기화
+        id = _id;
+        name = _name; //힙 영역에 할당
+        subject = _subject; //할당받는 변수로 초기화
         /*
         id=202400;
         name="first";
