@@ -15,7 +15,7 @@ public class Ex02 {
         return result; //return: 함수가 연산을 끝냄
     }
     public  static int calc (int x) {
-        int y = x * 2 +1;
+        int y = x * 2 + 1;
         return y;
     }
 }
