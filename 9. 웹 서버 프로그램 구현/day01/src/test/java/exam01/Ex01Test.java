@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Tag("exercise")
 @DisplayName("TEST....")
 public class Ex01Test {
-    @Test
+    @Test //Test 태그로 단위별 테스트 실행 가능
     @DisplayName("TEST1...")
     void test1() {
         Calculator cal = new Calculator();
