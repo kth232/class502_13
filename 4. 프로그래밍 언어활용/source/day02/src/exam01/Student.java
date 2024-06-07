@@ -5,8 +5,8 @@ public class Student {
     String name; //이름
     String subject; //과목
 
-    public Student(){ //생성자 오버로드
-        id = 2024;
+    public Student() { //생성자 오버로드
+        id = 202400;
         name = "kim";
         subject = "major";
     }
@@ -29,10 +29,10 @@ public class Student {
 
     void study() { //내부 수행하고 종료될 시 void(비어있다)->자료형 명시하지 않음
         // 객체 생성->호출->
-        System.out.printf("%d, %s studies %s.\n", id, name, subject);
+        System.out.printf("id: %d, name: %s, subject: %s\n", id, name, subject);
         
-        return; //리턴 시 함수 수행 종료됨
+        return; //리턴 시 함수 수행 종료됨, 아래 로직은 수행하지 않음
  
-        //System.out.println("여긴 실행 안돼요..");
+        //System.out.println("여기는 실행 안됨..");
     }
 }
