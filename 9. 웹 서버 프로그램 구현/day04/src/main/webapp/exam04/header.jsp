@@ -6,7 +6,6 @@
 </head>
     <body>
         <header>
-        <h2>top section</h2>
+        <h2>top part</h2>
         </header>
-    </body>
-</html>
+
