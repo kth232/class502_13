@@ -1,0 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.time.*" %>
+<jsp:useBean id="now" class="java.time.LocalDateTime" />
+${now}
+<%--error 발생! 기본 생성자가 없기 때문--%>
