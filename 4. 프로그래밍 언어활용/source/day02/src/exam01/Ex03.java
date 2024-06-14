@@ -7,7 +7,7 @@ public class Ex03 {
         System.out.println(System.identityHashCode(s1)); //변수의 가상주소 출력 -> JVM이 실행될 때 물리적 주소로 접근함
 
         Student s2 = new Student(202412, "kim", "react"); //새로운 다른 객체를 생성, 입력받는 값에 따라 다르게 출력
-        s2.study();
+        s2.study(); //스택이 없으면 객체 생성 불가->생성자 함수 호출 불가
         System.out.println(System.identityHashCode(s2));
     }
 }
