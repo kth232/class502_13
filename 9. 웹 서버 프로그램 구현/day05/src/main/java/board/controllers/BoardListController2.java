@@ -22,9 +22,14 @@ public class BoardListController2 extends HttpServlet {
         List<BoardData> items = service.getList();
         
         req.setAttribute("items", items);
+        req.setAttribute("addCss", new String[] {"board/style.css", "board/list2"});
+        req.setAttribute("addScript", List.of("board/common.js", "board/list2"));
+        //css 동적 추가
         
         //뷰에 연결, 버퍼 치환
         //직접 접근은 안되지만 서블릿을 통해서는 접근 가능
+        //속성 설정은 반드시 requestDispatcher 상단에 정의해야 함
+        //출력 완료 시 속성 반영 안되기 때문
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/templates/board/list2.jsp"); //=뷰
         rd.forward(req, resp);
         
