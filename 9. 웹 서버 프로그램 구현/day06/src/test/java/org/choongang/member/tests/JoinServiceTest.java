@@ -162,20 +162,22 @@ public class JoinServiceTest {
 }
 
     /*
-    assertThrows(DuplicatedMemberException.class, new Executable() {
-        @Override
-        public void execute() throws Throwable{
-        }
-    });
+        assertThrows(DuplicatedMemberException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable{
 
-    assertThrows() 지역 내부에 정의된 상태
-    Executable executable = new Executable() {
-        @Override
-        public void execute() throws Throwable {
-        }
-    };
+            }
+        });
 
-    -- 간소화 --
-    Executable executable = () -> {
-    };
+        assertThrows() 지역 내부에 정의된 상태
+        Executable executable = new Executable() {
+            @Override
+            public void execute() throws Throwable {
+
+            }
+        };
+
+        -- 간소화 --
+        Executable executable = () -> {
+        };
     */
