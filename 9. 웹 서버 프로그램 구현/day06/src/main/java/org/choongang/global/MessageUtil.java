@@ -13,8 +13,9 @@ public class MessageUtil {
         if (e instanceof CommonException){
             CommonException commonException = (CommonException) e;
             resp.setStatus(commonException.getStatus());
-        } //어짜피 형변환 해야하기 때문에 짧게 쓸 수 있게 적용됨, 최근 버전에서 바뀐 듯..
+        }
          */
+        //어짜피 형변환 해야하기 때문에 짧게 쓸 수 있게 적용됨, 최근 버전에서 바뀐 듯..
         if (e instanceof CommonException commonException){
             resp.setStatus(commonException.getStatus());
         }
@@ -39,6 +40,6 @@ public class MessageUtil {
 
     public static void go(String url, HttpServletResponse resp) throws IOException {
         go(url, "self", resp);
-    } //target은 null이나 공백을 넣어도 부모창으로 이동함, 많이 사용하는 메서드를 오버로드한 것
-
+    } //target은 null이나 공백을 넣어도 부모창으로 이동함
+    // 많이 사용하는 메서드를 오버로드한 것
 }

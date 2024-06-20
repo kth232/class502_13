@@ -10,13 +10,12 @@ import java.io.Reader;
 
 public class DBConn {
     //sqlsession 생성 및 연결
-    //session factory 객체 생성
     private static SqlSessionFactory factory;
 
     static {
         try { //빌더로 리소스 읽어오기
         Reader reader = Resources.getResourceAsReader("org/choongang/global/configs/mybatis-config.xml");
-        factory = new SqlSessionFactoryBuilder().build(reader);
+        factory = new SqlSessionFactoryBuilder().build(reader); //session factory 객체 생성
     } catch (IOException e){
         e.printStackTrace();
         }
