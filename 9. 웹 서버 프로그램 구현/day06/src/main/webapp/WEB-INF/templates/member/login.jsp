@@ -5,7 +5,7 @@
 
 <layout:main title="login">
     <h1>LOGIN</h1>
-        <form method="POST" action="${actionUrl}" autocomplete="off">
+        <form method="POST" action="${actionUrl}" autocomplete="off" target="ifrmProcess">
             <dl>
                 <dt>email</dt>
                 <dd>

@@ -47,4 +47,7 @@
             <jsp:invoke fragment="footer" />
         </footer>
     </body>
+    <iframe name="ifrmProcess" class="dn"></iframe>
+    <!--히든 프레임(자식 창), 해당 프레임으로 제출하면 페이지를 왔다갔다 하지 않을 수 있다.
+    해당 프레임은 보이지 않게 처리하는 것이 좋다-->
 </html>

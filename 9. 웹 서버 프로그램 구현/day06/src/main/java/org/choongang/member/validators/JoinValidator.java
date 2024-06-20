@@ -43,6 +43,7 @@ public class JoinValidator implements Validator<RequestJoin>, RequiredValidator,
         checkTrue(password.length() >= 8, new BadRequestException("비밀번호는 8자리 이상 입력해주세요."));
 
         //이미 가입된 회원인지 체크
+        //기존 값을 없애고 다시 만들어진 값으로 대체(캐시 비우기)
         checkTrue(mapper.exist(email) == 0L, new DuplicatedMemberException());
     }
 }
