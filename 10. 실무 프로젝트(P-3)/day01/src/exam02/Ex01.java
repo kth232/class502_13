@@ -8,7 +8,8 @@ public class Ex01 {
     public static void main(String[] args) throws Exception{
         Class clazz = Member.class; //생성자 1개
 
-        Constructor constructor = clazz.getDeclaredConstructors()[0];
+        Constructor constructor = clazz.getDeclaredConstructors()[0]; //모든 범위의 생성자 메서드를 조회, 0번째 요소
+        //getDeclar
         Object obj = constructor.newInstance(); //특정할 수 없는 어떤 객체임을 가정하고 생성
         
         Method[] methods = clazz.getDeclaredMethods(); //모든 메서드 확인 가능
