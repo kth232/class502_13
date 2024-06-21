@@ -9,8 +9,7 @@ public class Ex01 {
         Class clazz = Member.class; //생성자 1개
 
         Constructor constructor = clazz.getDeclaredConstructors()[0];
-
-        Object obj = constructor.newInstance();//특정할 수 없는 어떤 객체임을 가정하고 생성
+        Object obj = constructor.newInstance(); //특정할 수 없는 어떤 객체임을 가정하고 생성
         
         Method[] methods = clazz.getDeclaredMethods(); //모든 메서드 확인 가능
         for (Method method : methods) {
