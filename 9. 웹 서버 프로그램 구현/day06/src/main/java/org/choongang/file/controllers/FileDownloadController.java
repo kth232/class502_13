@@ -19,7 +19,7 @@ public class FileDownloadController extends HttpServlet {
         String fileName = new String(file.getName().getBytes(), "ISO8859_1");
 
         //브라우저에게 알려주는 파일 정보
-        resp.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+        resp.setHeader("Content-Disposition", "attachment; fileName=" + fileName);
         //응답 헤더: Content-Disposition
         resp.setContentType(contentType);
         resp.setHeader("Cache-Control", "must-revalidate");
