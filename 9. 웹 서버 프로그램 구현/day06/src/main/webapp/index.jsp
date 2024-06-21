@@ -7,12 +7,14 @@
 
 로그인 상태: ${isLogin}<br>
 
+<%-- 미로그인 상태 --%>
 <util:GuestOnly>
-1
+    <a href="${loginUrl}">로그인</a>
+    <a href="${joinUrl}">회원가입</a>
 </util:GuestOnly>
-
 <util:MemberOnly>
-    2
+    ${loggedMember.userName}(${loggedMember.email})님 로그인
+    <a href="${logoutUrl}">로그아웃</a>
 </util:MemberOnly>
 
 <%--로그아웃 상태, session Scope로 범위 제한--%>
