@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.choongang.global.exceptions.CommonException;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -35,6 +36,8 @@ public class FileDownloadController extends HttpServlet {
         out.println("ABC");
         out.println("DEF"); //화면 출력을 파일로 출력하도록 바꿔주기
         */
+        } catch (CommonException e) {
+            e.printStackTrace();
         }
     }
 }
