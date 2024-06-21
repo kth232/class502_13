@@ -12,8 +12,10 @@
     <a href="${loginUrl}">로그인</a>
     <a href="${joinUrl}">회원가입</a>
 </util:GuestOnly>
+
+<%--로그인 상태--%>
 <util:MemberOnly>
-    ${loggedMember.userName}(${loggedMember.email})님 로그인
+    ${loggedMember.userName}(${loggedMember.email})님 로그인...
     <a href="${logoutUrl}">로그아웃</a>
 </util:MemberOnly>
 

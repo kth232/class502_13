@@ -5,7 +5,7 @@
 
 <layout:main title="join">
     <h1>JOIN</h1>
-    <form method="post" action="${acitonUrl}" autocomplete="off" target="ifrmProcess">
+    <form method="post" action="${actionUrl}" autocomplete="off" target="ifrmProcess">
     <%--form 태그로 감싸야만 데이터 전송 가능, 자동완성 기능 끄기, 히든 프레임으로 제출--%>
     <dl>
         <dt>email</dt>
