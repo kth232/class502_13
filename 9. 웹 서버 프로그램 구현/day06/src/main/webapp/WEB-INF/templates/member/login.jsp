@@ -9,7 +9,8 @@
             <dl>
                 <dt>email</dt>
                 <dd>
-                    <input type="text" name="email">
+                    <input type="text" name="email" value="${cookie.saveEmail == null ? '' : cookie.saveEmail.value}">
+                    <!--cookie.saveEmail.getValue()->value로 가능/단, 값이 없을 때 오류 발생->공백으로 처리-->
                 </dd>
             </dl>
             <dl>
@@ -19,7 +20,8 @@
                 </dd>
             </dl>
             <div>
-                <input type="checkbox" name="saveEmail" value="true" id="saveEmail">
+                <input type="checkbox" name="saveEmail" value="true" id="saveEmail" ${cookie.saveEmail == null ? '' : ' checked'}>
+                <!--기본으로 체크되어있는 상태-->
                 <label for="saveEmail">save Email</label>
             </div>
             <button type="submit">LOGIN</button>

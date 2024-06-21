@@ -12,7 +12,7 @@ public class MemberUtil {
 
     public static Member getMember(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Member member = (Member)session.getAttribute("member");
+        Member member = (Member)session.getAttribute("member"); //멤버 속성값 가져옴
 
         return member;
     }

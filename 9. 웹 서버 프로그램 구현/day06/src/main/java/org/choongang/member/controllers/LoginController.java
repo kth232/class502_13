@@ -3,6 +3,7 @@ package org.choongang.member.controllers;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -28,9 +29,24 @@ public class LoginController extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try{
             LoginService service = MemberServiceProvider.getInstance().loginService();
-            service.process(req); //예외가 없으면 성공한 것
+            service.process(req);
+            //예외가 없으면 성공한 것
+            
+            //이메일 기억하기 처리 S
+            //사실 좋은 방법은 아님..
+            String email = req.getParameter("Email");
+            Cookie cookie = new Cookie("saveEmail", email);
+            if (req.getParameter("saveEmail") != null) { //이메일 기억하기 체크
+                //7일간 기억하기
+                cookie.setMaxAge(60 * 60 * 24 * 7); //초단위
+            } else { //체크 해제-쿠키 제거
+               cookie.setMaxAge(0);
+            }
+            resp.addCookie(cookie);
+            //이메일 기억하기 처리 E
 
-            go(req.getContextPath()+"/", "parent", resp); //실제 주소: http://localhost:3000/day06/index.jsp
+            go(req.getContextPath()+"/", "parent", resp);
+            //실제 주소: http://localhost:3000/day06/index.jsp , 부모창에서 열기
         }catch (CommonException e){
             alertError(e, resp);
         }

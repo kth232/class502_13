@@ -16,6 +16,6 @@ public class LogoutController extends HttpServlet {
         HttpSession session = req.getSession();
         session.invalidate(); //세션 비우기=로그아웃
         
-        resp.sendRedirect(req.getContextPath()+"/member/login"); //로그인 페이지로 이동
+        resp.sendRedirect(req.getContextPath()); //메인 페이지로 이동
     }
 }

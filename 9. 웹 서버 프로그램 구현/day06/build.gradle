@@ -33,6 +33,8 @@ dependencies {
 
     implementation 'org.mindrot:jbcrypt:0.4' //jbcrypt
 
+    implementation 'org.apache.commons:commons-fileupload2-jakarta-servlet6:2.0.0-M2' //fileupload lib
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
