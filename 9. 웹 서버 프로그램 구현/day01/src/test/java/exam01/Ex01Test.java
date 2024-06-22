@@ -29,9 +29,9 @@ public class Ex01Test {
         LocalDate expected = LocalDate.now();
         LocalDate date = LocalDate.of(2024, 6, 5);
 
-        assertEquals(expected, date); // equals and hashCode
+        assertEquals(expected, date); // equals and hashCode 동등성 비교 -> true
 
-        assertSame(expected, date); // 테스트 실패
+        assertSame(expected, date); //객체 동일성 비교->테스트 실패
     }
 
     @Test
