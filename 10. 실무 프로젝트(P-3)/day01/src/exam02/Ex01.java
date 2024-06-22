@@ -14,12 +14,12 @@ public class Ex01 {
         Method[] methods = clazz.getDeclaredMethods(); //모든 메서드 확인 가능
         for (Method method : methods) {
             //System.out.println(method);
-            String name = method.getName();
+            String name = method.getName(); //메서드명 가져옴
             if (!name.startsWith("set")) {
                 continue;
             }
             
-            Class clz = method.getParameterTypes()[0]; //, 매개변수 타입 배열 반환
+            Class clz = method.getParameterTypes()[0]; // 매개변수 타입 배열 반환
             Object arg = null;
             if (clz == String.class) { //setter 메서드의 매개변수가 문자열
                 arg = "String";
@@ -27,6 +27,7 @@ public class Ex01 {
                 arg = LocalDateTime.now();
             }
             method.invoke(obj, arg); //setter 메서드 호출
+            //invoke(): method를 동적으로 실행시켜주는 메서드
         }
         System.out.println(obj);
         //어떤 메서드, 어떤 객체인지 몰라도 정보 확인 가능
