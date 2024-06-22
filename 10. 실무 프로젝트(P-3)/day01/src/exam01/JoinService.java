@@ -9,7 +9,7 @@ public class JoinService {
         System.out.printf("매개변수가 있는 생성자 호출: %s, %d%n", arg1, arg2);
     }
 
-    public JoinService(String arg1, int arg2, int arg3) {
+    public JoinService(String arg1, int arg2, long arg3) {
         System.out.printf("매개변수가 있는 생성자 호출2: %s, %d, %d%n", arg1, arg2, arg3);
     }
 }

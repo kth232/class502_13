@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Ex01 {
     public static void main(String[] args) throws Exception {
-        //reflection API
+        //reflection API: 구체적인 클래스 타입을 알지 못해도 해당 클래스의 정보에 접근할 수 있게 해주는 API
         Class clazz = JoinService.class;
 
         Constructor[] constructors = clazz.getDeclaredConstructors(); //모든 범위의 생성자 메서드를 조회
         for (Constructor constructor : constructors) {
-            System.out.println("매개변수 개수: "+ constructor.getParameterTypes().length);
+            System.out.println("매개변수 개수: "+ constructor.getParameterTypes().length); //매개변수 유형 배열
             
             List<Object> arguments = new ArrayList<>();
             for(Class clz: constructor.getParameterTypes()){
