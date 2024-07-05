@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.format.DateTimeFormatter;
+
 @Configuration //스프링이 관리할 객체임을 알려주는 애노테이션
 public class AppCtx2 { //객체 조립기 역할을 대신해주는 스프링
 
@@ -41,5 +43,12 @@ public class AppCtx2 { //객체 조립기 역할을 대신해주는 스프링
         //infoService.setMemberDao(memberDao());
 
         return infoService;
+    }
+
+    @Bean //자바 JDK, 외부 라이브러리는 수동 등록 필수, 사용자가 만든 건 자동 스캔함
+    public DateTimeFormatter dateTimeFormatter() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        return formatter;
     }
 }

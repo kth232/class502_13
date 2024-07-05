@@ -10,7 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Ex03 {
     @Test
-    void test1() {
+    void test01() {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx2.class);
 
         JoinService joinService = ctx.getBean(JoinService.class);
