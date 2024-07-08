@@ -2,22 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <script src="script.js" defer></script>
+        <script src="script.js" defer></script> <!--defer 키워드로 이벤트 바인딩 없이 DOM 객체 선택 가능-->
     </head>
     <body>
         <!--
         <script>
             //const button = document.getElementById("button");
-            //console.log(button);/*변환작업은 위에서 순서대로 진행됨, 현재 button이 아직 없기 때문에 null값 반환*/
+            //console.log(button);
+            /*변환작업은 위에서 순서대로 진행됨, 현재 button이 아직 없기 때문에(document 객체로 변환이 안되었기 때문에) null값 반환*/
             window.addEventListener("DOMContentLoaded", function() {
-                //객체 변환 완료, 이벤트 발생
-                const button = document.getElementById("button"); //document 객체 검색
+                //객체 변환 완료=DOM 구성 완료=DOM 트리 구성 완료, 이벤트 발생
+                const button = document.getElementById("button"); //DOMContentLoaded 이벤트 발생 후 document 객체로 검색 가능->DOMContentLoaded 이벤트 발생 필수!
                 console.log(button);
             });
         </script>
         -->
         <button type="button" id="button">click</button>
-        
 
         <!--
         <button type="button" id="button">click</button>
