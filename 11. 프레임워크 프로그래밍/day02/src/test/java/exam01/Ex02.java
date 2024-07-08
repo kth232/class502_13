@@ -15,6 +15,7 @@ public class Ex02 {
 //        BoardService service = ctx.getBean(BoardService.class);
 //        service.write();
 
+        //빈의 범위가 프로토타입일 경우 매번 새로운 객체를 생성한다
         BoardService2 s1 = ctx.getBean(BoardService2.class);
         BoardService2 s2 = ctx.getBean(BoardService2.class);
         System.out.println(s1 == s2); // false
