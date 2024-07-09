@@ -10,6 +10,7 @@ public class Ex02 {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 
         //4번 연산
+        //RecCalculator cal = ctx.getBean(RecCalculator.class);
         Calculator cal = ctx.getBean(Calculator.class);
         long result = cal.factorial(6L);
         System.out.println(result);
