@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
         <meta charset="UTF-8">
+        <title>Document</title>
     </head>
     <body>
+        <h1>부모창</h1>
         <input type="text" id="text">
+        <iframe src="ex05.html" width="600" height="700"></iframe> 
+        <!--다른 html파일을 자식 창으로 열면 accessing a cross-origin frame 에러 발생
+        web browser console 에서 직접 입력할 것
+        또는 자신의 창에서 iframe 사용(ex02.html)-->
+        <script>
+            function writeBoard() {
+                console.log("ex01에 정의된 함수");
+            }
+            // window.writeBoard(); -> console에 로그 출력
+        </script>
     </body>
 </html>
