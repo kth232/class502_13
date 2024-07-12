@@ -1,3 +1,7 @@
 body {
     background: gold;
 }
+
+input [type='text'] {
+    height: 35px;
+}

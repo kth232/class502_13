@@ -2,27 +2,37 @@ package org.choongang.member.validators;
 
 
 import lombok.RequiredArgsConstructor;
-import org.choongang.global.exceptions.BadRequestException;
-import org.choongang.global.validators.RequiredValidator;
-import org.choongang.global.validators.Validator;
 import org.choongang.member.controllers.RequestJoin;
-import org.choongang.member.mappers.MemberMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 @Component
 @RequiredArgsConstructor //DI-생성자 매개변수
-public class JoinValidator implements Validator<RequestJoin>, RequiredValidator { //사실 스프링이 제공하는 부분..
+public class JoinValidator implements Validator {
+    //Validator<RequestJoin>, RequiredValidator/ 사실 스프링이 제공하는 부분..
 
+    @Override
+    public boolean supports(Class<?> clazz) { // RequestJoin 커맨드 객체만 검증하도록 제한
+        return clazz.isAssignableFrom(RequestJoin.class);
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
+    }
+
+
+    /*
     private final MemberMapper mapper;
     
     @Override
     public void check(RequestJoin form) {
-        /**
-         * 1. 필수 항목 검증(email, password, confirmPassword, userName, agree)
-         * 2. 이메일 중복 여부(가입되어 있는 회원인지 체크)
-         * 3. 비밀번호 자리수 체크(최소 8자리)
-         * 4. 비밀번호, 비밀번호 확인 일치 여부
-         */
+
+//         1. 필수 항목 검증(email, password, confirmPassword, userName, agree)
+//         2. 이메일 중복 여부(가입되어 있는 회원인지 체크)
+//         3. 비밀번호 자리수 체크(최소 8자리)
+//         4. 비밀번호, 비밀번호 확인 일치 여부
         
         String email = form.getEmail();
         String password = form.getPassword();
@@ -47,4 +57,5 @@ public class JoinValidator implements Validator<RequestJoin>, RequiredValidator 
         //비밀번호, 비밀번호 확인 일치 여부
         checkTrue(password.equals(confirmPassword), new BadRequestException("비밀번호가 일치하지 않습니다"));
     }
+    */
 }
