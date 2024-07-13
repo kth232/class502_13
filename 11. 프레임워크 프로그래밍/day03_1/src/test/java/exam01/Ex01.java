@@ -14,5 +14,8 @@ public class Ex01 {
         Calculator cal = (Calculator) obj;
         long result = cal.factorial(6L);
         System.out.println(result);
+
+        System.out.println(cal);
+        System.out.println(cal.getClass().getName());
     }
 }
