@@ -3,21 +3,21 @@ package config;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Aspect
+@Aspect //공통 기능 클래스
 @Order(1) //순서 지정
 public class ProxyCache {
-    Map<Long, Object> data = new HashMap<>();
+    Map<Long, Object> data = new HashMap<>(); //첫번째 인자를 long 타입으로 구함
     /*
     @Pointcut("execution(* exam01..*(..))") //적용 범위 설정
     public void publicTarget() {}
     
-    @Around("publicTarget()")
+    @Around("publicTarget()") //@Pointcut 설정은 첫 번째 인자가 long인 메서드를 대상
+    // -> execute()는 Calculator의 factorial(long) 메서드에 적용
     */
     @Around("CommonPointcut.publicTarget()") //포인트컷을 따로 분리해서 사용하는 경우 경로 입력(같은 패키지인 경우 패캐지명 생략 가능)
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {

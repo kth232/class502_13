@@ -12,19 +12,18 @@ public class Ex02 {
         //4번 연산
         //RecCalculator cal = ctx.getBean(RecCalculator.class);
         Calculator cal = ctx.getBean(Calculator.class);
-        long result = cal.factorial(6L);
+        long result = cal.factorial(6L); //ProxyCache->ProxyCalculator2->실제 대상 객체(RecCalculator)
         System.out.println(result);
 
         long result2 = cal.factorial(6L);
         System.out.println(result2);
 
-        long result3 = cal.factorial(6L);
+        long result3 = cal.factorial(8L);
         System.out.println(result3);
 
-        long result4 = cal.factorial(6L);
+        long result4 = cal.factorial(8L);
         System.out.println(result4);
 
         ctx.close();
     }
-
 }
