@@ -45,7 +45,7 @@ public class AppCtx2 { //객체 조립기 역할을 대신해주는 스프링
         return infoService;
     }
 
-    @Bean //자바 JDK, 외부 라이브러리는 수동 등록 필수, 사용자가 만든 건 자동 스캔함
+    //@Bean //자바 JDK, 외부 라이브러리는 수동 등록 필수, 사용자가 만든 건 자동 스캔함
     public DateTimeFormatter dateTimeFormatter() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 

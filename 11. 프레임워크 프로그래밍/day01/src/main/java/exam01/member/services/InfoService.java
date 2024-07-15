@@ -35,13 +35,27 @@ public class InfoService {
         this.formatter = formatter;
     }
 
-    /*
-    @Autowired //실행되어 null 값으로 주입-> 호출 o -> 단, null값으로 대입되어서 기본값으로 정의된 포맷 적용 안됨
-    public void setFormatter(@Nullable DateTimeFormatter formatter) { //@Nullable 없을 수도 있는 객체 -> 필수 여부 해제
-        System.out.println("call()");
-        this.formatter = formatter;
-    }
-    */
+
+//    @Autowired
+//    public void setFormatter(Optional<DateTimeFormatter> opt) {
+//        System.out.println("callcall()"); //bean 없는 상태에서도 호출 o
+//        /*
+//        if(opt.isPresent()){
+//            this.formatter = opt.get();
+//        }else {
+//            this.formatter = null;
+//        } //아래 코드와 같음
+//        */
+//
+//        this.formatter = opt.orElse(null); //orElse: Optional 값이 null이든 아니든 반드시 실행
+//    }
+
+
+//    @Autowired //실행되어 null 값으로 주입-> 호출 o -> 단, null값으로 대입되어서 기본값으로 정의된 포맷 적용 안됨
+//    public void setFormatter(@Nullable DateTimeFormatter formatter) { //@Nullable 없을 수도 있는 객체 -> 필수 여부 해제
+//        System.out.println("call()");
+//        this.formatter = formatter;
+//    }
 
     public void printList() {
         List<Member> members = memberDao.getList();

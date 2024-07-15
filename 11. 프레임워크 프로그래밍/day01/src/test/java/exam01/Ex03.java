@@ -1,6 +1,5 @@
 package exam01;
 
-import exam01.config.AppCtx;
 import exam01.config.AppCtx2;
 import exam01.member.controllers.RequestJoin;
 import exam01.member.services.InfoService;
@@ -33,7 +32,7 @@ public class Ex03 {
     void test02() {
         //AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class, AppCtx2.class);
         //AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(exam01.config); //범위 지정
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx2.class);
 
         JoinService joinService = ctx.getBean(JoinService.class); //AppCtx2
         InfoService infoService = ctx.getBean(InfoService.class); //AppCtx2
