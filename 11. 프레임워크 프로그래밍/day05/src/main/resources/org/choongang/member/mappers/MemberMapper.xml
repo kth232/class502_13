@@ -11,7 +11,7 @@
         <result column="REG_DT" property="regDt" />
     </resultMap>
     <!--필드명을 전부 명시하는 게 오류 방지에 좋다-->
-    <insert id ="register">
+    <insert id="register">
         INSERT INTO MEMBER (SEQ, EMAIL, PASSWORD, USER_NAME)
         VALUES (SEQ_MEMBER.NEXTVAL, #{email}, #{password}, #{userName})
     </insert>
@@ -23,5 +23,4 @@
     <select id="exists" resultType="int">
         SELECT COUNT(*) FROM MEMBER WHERE EMAIL = #{email}
     </select>
-
 </mapper>

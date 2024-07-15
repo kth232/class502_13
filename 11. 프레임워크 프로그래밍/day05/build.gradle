@@ -43,8 +43,14 @@ dependencies {
 
     testImplementation "org.springframework:spring-test:$springVersion" //spring test
     
+    //스트링에서 검증 자동화->검증 코드 축소
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2' //validation api, 버전 수정(3.1.0->3.0.2)
+
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
 }
 
 test {
