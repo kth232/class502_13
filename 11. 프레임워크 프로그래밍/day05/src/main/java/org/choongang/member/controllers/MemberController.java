@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
@@ -45,19 +46,14 @@ public class MemberController {
         
         return "redirect:/member/login"; //location header를 통해 주소 이동
     }
-    
-    /*
-    @InitBinder //컨트롤러 내 공통적인 validator
-    public void initBinder(WebDataBinder binder) {
-        binder.setValidator(joinValidator);
-    }
-     */
 
     @GetMapping("/login")
     public String login(@ModelAttribute RequestLogin form,
                         @CookieValue(name="savedEmail", required = false) String savedEmail
                         /*@SessionAttribute(name ="member", required = false) Member member*/) { //HttpSession session
-        //Member member = (Member)session.getAttribute("member");
+        //애노테이션 잘 확인하기!
+        // 쿠키 값 명시해야 지원 가능함
+        // Member member = (Member)session.getAttribute("member");
         /*
         if(member != null) { //NullPointerException 방지
             log.info(member.toString());
@@ -89,6 +85,61 @@ public class MemberController {
     public String logout(HttpSession session) {
         session.invalidate(); //세션 비우기
 
-        return "redirect: /member/login";
+        return "redirect:/member/login";
     }
+
+    @GetMapping("/list")
+    public String list(@ModelAttribute MemberSearch search, Errors errors) { //에러 객체
+        //요청 파라미터가 없더라도 search 객체에 null x
+        //커맨드 객체 필드에 자동 바인딩->search 객체가 모델에 추가됨, 뷰에서 참조
+        log.info(search.toString());
+
+        boolean result = false;
+        if(!result){
+            throw new BadRequestException("예외 발생");
+        }
+
+        return "member/list";
+    }
+
+    //경로 변수 연습
+    @ResponseBody //반환값을 void로 만들기 위해 추가
+    @GetMapping({"/info/{id}/{id2}", "/info/{id}"}) //경로 변수 설정(복수개 가능), 바뀔 수 있는 값->변수 자료형에 따라 형변환해서 주입
+    public void info(@PathVariable("id") String email, @PathVariable(name="id2", required = false) String email2) {
+        //required=false를 통해 id2에 값이 없으면 null 값으로 대체되어 출력됨
+        //과거엔 패턴과 변수명이 일치하면 알아서 인식하여 주입해줬는데 reflection api 업데이트로 변수명을 알 수 없게 되어 현재는 id값을 명시해줘야 인식 가능
+
+        log.info("email:{}, email2:{}", email, email2);
+        //url->http://localhost:3000/day05/member/info/email11/email22
+        //결과->INFO o.c.m.c.MemberController - email:email11, email2:email22
+    }
+    
+//    @ExceptionHandler({Exception.class})
+//    public String errorHandler(Exception e, HttpServletRequest request, HttpServletResponse response, Model model) { //에러 페이지는 초반에 세팅하는 것이 좋다
+//        //정의한 예외만 동작함
+//        //컨트롤러에 정의한 에러 처리가 컨트롤러 advice에 정의한 것보다 우선됨
+//        e.printStackTrace();
+//        log.info("MemberController에서 유입");
+//
+//        return "error/common"; //에러 발생 시 여기로 유입됨
+//    }
+    //컨트롤러에서 예외 페이지 출력 가능
+    //예외마다 다른 페이지를 보여줘야 한다면 각각 정의하는 방법도 있음
+    //일반적으로 예외 페이지는 1개만 만들어서 일관되게 만드는 것이 좋다->디자인이 바뀌는 일이 거의 없다
+
+    /*
+    @ExceptionHandler({BadRequestException.class, RuntimeException.class})
+    public String errorHandler(BadRequestException e, HttpServletRequest request, HttpServletResponse response, Model model) { //에러 페이지는 초반에 세팅하는 것이 좋다
+        //정의한 예외만 동작함
+        e.printStackTrace();
+        return "member/common";
+    }
+    */
+
+    /*
+    @InitBinder //컨트롤러 내 공통적인 validator
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(joinValidator);
+    }
+     */
 }
