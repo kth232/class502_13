@@ -49,7 +49,7 @@ public class MemberController {
 
     @GetMapping("/login")
     public String login(@ModelAttribute RequestLogin form,
-                        @CookieValue(name="savedEmail", required = false) String savedEmail
+                        @CookieValue(name="savedEmail", required = false) String savedEmail //실제 쿠키 이름
                         /*@SessionAttribute(name ="member", required = false) Member member*/) { //HttpSession session
         //애노테이션 잘 확인하기!
         // 쿠키 값 명시해야 지원 가능함
