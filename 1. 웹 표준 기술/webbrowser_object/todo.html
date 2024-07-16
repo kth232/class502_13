@@ -5,20 +5,22 @@
         <script src="js/todo3.js"></script>
     </head>
     <body>
-        <form name="frmRegist" autocomplete="off">
+        <!--name값으로 양식 항목에 바로 접근 가능함-->
+        <form name="frmRegist" autocomplete="off" method="post">
             <h2>TO DO LIST</h2>
             <input type="text" name="subject">
-            <button type="submit">registration</button>
-
+            <button type="submit">regist</button>
         </form>
         <hr>
-        <ol class="items">
+        <ol id="items" class="items">
         </ol>
 
-        <script type="text/html" id="tpl"><!--템플릿 정의, 스크립트 부분 출력없이 html로 해석하고 데이터를 가지고만 있음-->
-            <li data-id="#id">#subject
+        <script type="text/html" id="tpl">
+            <!--템플릿 정의, 스크립트 부분 출력없이 html로 해석하고 데이터를 가지고만 있음-->
+            <!-- <li data-id="#id">#subject
                 <button type="button">delete</button>
-            </li> <!--치환코드(#name), 바뀔 수 있는 부분-->
+            </li> -->
+            <!--치환코드(#name), 바뀔 수 있는 부분-->
         </script>
     </body>
 </html>
