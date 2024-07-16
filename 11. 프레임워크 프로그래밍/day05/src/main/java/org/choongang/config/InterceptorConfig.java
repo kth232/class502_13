@@ -1,0 +1,38 @@
+package org.choongang.config;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import org.choongang.global.interceptors.MemberOnlyInterceptor;
+import org.choongang.member.MemberUtil;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@RequiredArgsConstructor
+public class InterceptorConfig implements WebMvcConfigurer {
+    //WebMvcConfigurer 필요한 만큼 정의 가능->단, 같은 메서드를 각각 오버라이딩하면 안됨
+    //설정 별로 분리해서 관리하는 것이 좋다
+
+    private final MemberOnlyInterceptor memberOnlyInterceptor;
+    private final MemberUtil memberUtil;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new HandlerInterceptor() {
+            @Override
+            public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+
+                modelAndView.addObject("isLogin", memberUtil.isLogin());
+                modelAndView.addObject("loggedMember", memberUtil.getMember());
+            }
+        });
+
+        registry.addInterceptor(memberOnlyInterceptor)
+                .addPathPatterns("/mypage/**"); //Ant 패턴
+        //마이 페이지를 포함한 모든 경로 등록
+    }
+}

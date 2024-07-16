@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 @EnableWebMvc //webMVC 알아서 설정 세팅해줌 <-원래는 관리 객체를 다 설정해줘야 함
 @ComponentScan("org.choongang") //자동 스캔, 수동 등록 빈은 특수한 상황을 제외하고는 잘 안만든다
-@Import({DBConfig.class, MessageConfig.class}) //DB, Msg 설정 클래스 가져와서 사용, 여러개일 경우 배열 형태로 작성, 편리한 관리 위해 설정 파일을 분리
+@Import({DBConfig.class, MessageConfig.class, InterceptorConfig.class}) //DB, Msg, Interceptor 설정 클래스 가져와서 사용, 여러개일 경우 배열 형태로 작성, 편리한 관리 위해 설정 파일을 분리
 @RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer { //webMVC 설정 인터페이스 구현(중요! 암기!)
 

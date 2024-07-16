@@ -24,6 +24,12 @@
             </param-value>
         </init-param>
         <!--스캔 범위가 org.choongang으로 기본 설정됨-->
+        <!--파일 설정, 파일 용량 등을 정의-->
+        <multipart-config>
+            <max-file-size>20971520</max-file-size> <!--한 파일 당 최대 용량 20mb-->
+            <max-request-size>62914560</max-request-size> <!--최대 업로드 파일 용량 60mb-->
+            <file-size-threshold>20971520</file-size-threshold>
+        </multipart-config>
     </servlet>
     <!--init-param: 지정된 서블릿 내에서만 사용할 수 있는 값(private 지역변수와 유사함)-->
     <!--서블릿 매핑 필수-->
