@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberOnlyInterceptor implements HandlerInterceptor {
     //시점 별로 공통 처리 수행 가능, 시점 구분 주의
 
-    
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("preHandle()");

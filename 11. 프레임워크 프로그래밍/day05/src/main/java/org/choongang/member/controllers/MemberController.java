@@ -50,7 +50,7 @@ public class MemberController {
     @GetMapping("/login")
     public String login(@ModelAttribute RequestLogin form,
                         @CookieValue(name="savedEmail", required = false) String savedEmail //실제 쿠키 이름
-                        /*@SessionAttribute(name ="member", required = false) Member member*/) { //HttpSession session
+                        /*, @SessionAttribute(name ="member", required = false) Member member*/) { //HttpSession session
         //애노테이션 잘 확인하기!
         // 쿠키 값 명시해야 지원 가능함
         // Member member = (Member)session.getAttribute("member");
@@ -125,7 +125,7 @@ public class MemberController {
 //    }
     //컨트롤러에서 예외 페이지 출력 가능
     //예외마다 다른 페이지를 보여줘야 한다면 각각 정의하는 방법도 있음
-    //일반적으로 예외 페이지는 1개만 만들어서 일관되게 만드는 것이 좋다->디자인이 바뀌는 일이 거의 없다
+    //일반적으로 예외 페이지는 1개만 만들어서 일관되게 만드는 것이 좋다->디자인이 바뀌는 일이 거의 없기 때문
 
     /*
     @ExceptionHandler({BadRequestException.class, RuntimeException.class})

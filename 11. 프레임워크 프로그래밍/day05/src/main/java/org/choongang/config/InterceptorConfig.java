@@ -21,11 +21,12 @@ public class InterceptorConfig implements WebMvcConfigurer {
     private final MemberUtil memberUtil;
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new HandlerInterceptor() {
+    public void addInterceptors(InterceptorRegistry registry) { //addInterceptors: 인터셉터를 설정하는 메서드
+        registry.addInterceptor(new HandlerInterceptor() { //addInterceptor: HandlerInterceptor 객체를 설정
             @Override
             public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
+                //로그인 시 회원가입, 로그인 버튼을 없애기 위해 추가
                 modelAndView.addObject("isLogin", memberUtil.isLogin());
                 modelAndView.addObject("loggedMember", memberUtil.getMember());
             }

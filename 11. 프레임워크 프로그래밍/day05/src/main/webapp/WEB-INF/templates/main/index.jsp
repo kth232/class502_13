@@ -10,6 +10,7 @@
 <h1>main page</h1>
 <%--${isLogin}--%>
 <%--${loggedMember}--%>
+<%--로그인 했을 때}--%>
 <c:if test="${isLogin}">
     <spring:message code="LOGIN_MSG">
         <spring:argument value="${loggedMember.userName}" />
@@ -21,8 +22,9 @@
     <button type="button">
         <a href="${mypageUrl}"><spring:message code="마이페이지" /></a>
     </button>
-
 </c:if>
+
+<%--로그인 안했을 때}--%>
 <c:if test="${!isLogin}">
 <div class="button-group">
 <button type="button">
