@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:url var="loginUrl" value="/member/login" />
 <c:url var="joinUrl" value="/member/join" />
+<c:url var="logoutUrl" value="/member/logout" />
 <c:url var="mypageUrl" value="/mypage" />
 
 
