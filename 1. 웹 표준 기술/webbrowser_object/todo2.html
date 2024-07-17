@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="js/todo5.js"></script>
+    </head>
+    <body>
+        <!--name값으로 양식 항목에 바로 접근 가능함-->
+        <form name="frmTodo" autocomplete="off" method="post">
+            <h2>TO DO LIST</h2>
+            <input type="text" name="todo" placeholder="할일을 입력하세요">
+            <button type="submit">등록하기</button>
+        </form>
+        <hr> <!--구분선-->
+        <ol id="schedules">
+        </ol>
+
+        <!--스크립트만 해석-->
+        <script type="text/html" id="tpl">
+            <!--템플릿 정의, 스크립트 부분 출력없이 html로 해석하고 데이터를 가지고만 있음-->
+            <!--치환코드(#name), 바뀔 수 있는 부분-->
+            <li>
+                #todo#
+                <button type="button">삭제</button>
+            </li>
+        </script>
+    </body>
+</html>

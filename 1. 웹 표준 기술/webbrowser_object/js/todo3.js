@@ -1,4 +1,3 @@
-/*
 const todo = {
   id: 0,
   data: [], //schedule data
@@ -87,28 +86,5 @@ window.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     todo.add(); //schedule add
-
-*/
-
-
-window.addEventListener("DOMContentLoaded", function () {
-  //todo.init(); //데이터 조회 및 완성. DOM이 완성된 후 선택 가능
-
-  frmRegist.addEventListener("submit", function (e) {
-    //제출되면 발생하는 이벤트
-    e.preventDefault(); //폼의 기본동작 차단됨
-
-    //this = frmRegist //이벤트가 발생하는 폼 자체
-    const subject = this.subject.value.trim();
-
-    const liEl = document.createElement("li");
-    liEl.appendChild(document.createTextNode(subject));
-    //append()는 가변적 형태, node객체 + string도 가능
-    //appendChild()는 node객체만 가능
-
-    const itemsEl = document.getElementById("items")
-    itemsEl.appendChild(liEl);
-
-    //todo.add(); //schedule add
   });
 });
