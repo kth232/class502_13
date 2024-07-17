@@ -44,9 +44,13 @@ dependencies {
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2' //validation api, 버전 수정(3.1.0->3.0.2)
     implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
 
-    //JSON
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2' //jackson databind
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2' //date&time 패키지 사용 위해 추가
+    //json
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2' //date and time 패키지 사용 위함
+
+    //xml
+    //implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.17.2'
+
 
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'

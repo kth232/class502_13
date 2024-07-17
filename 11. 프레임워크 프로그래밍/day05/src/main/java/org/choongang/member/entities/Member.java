@@ -1,12 +1,11 @@
 package org.choongang.member.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +20,13 @@ public class Member {
     //@Column("ID") //컬럼명도 동일해야 함
     private Long seq; //(어짜피 바뀌긴 하지만)wrapper 클래스로 감쌈<-제네릭에 넣기 위함(기본형 안됨)
     private String email;
-    private String password;
+
+    @JsonIgnore //JSON 변환 시 제외됨
+    private String password; //비번은 민감한 개인정보->JSON 변환 제외
+
     private String userName;
+
+    //entity마다 입력해줘야 하는 번거로움 -> 설정 클래스에 형식 한정
+    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") //JSON 날짜 형식 변환
     private LocalDateTime regDt;
 }

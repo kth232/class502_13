@@ -26,16 +26,16 @@ public class FileController {
     @ResponseBody //템플릿이 필요없는 경우 사용
     @PostMapping("/upload")
     public void uploadPs(@RequestPart("file") MultipartFile file) { //의존성 주입으로 파일 업로드 가능
-        String name=file.getOriginalFilename();
+        String name = file.getOriginalFilename();
         log.info("file name: {}", name);
 
         File uploadPath = new File(uploadDir + name);
         //경로를 고정하는 것보다 프로퍼티 설정에 입력한 값으로 대체하는 것이 추후 수정하기 좋다
-
+        log.info("uploadDir:" + uploadDir);
         try {
             file.transferTo(uploadPath);
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 }

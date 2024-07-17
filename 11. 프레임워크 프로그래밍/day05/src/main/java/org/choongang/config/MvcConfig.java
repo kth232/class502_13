@@ -1,20 +1,31 @@
 package org.choongang.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.config.annotation.*;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Configuration
 @EnableWebMvc //webMVC 알아서 설정 세팅해줌 <-원래는 관리 객체를 다 설정해줘야 함
 @ComponentScan("org.choongang") //자동 스캔, 수동 등록 빈은 특수한 상황을 제외하고는 잘 안만든다
+/*
 @Import({DBConfig.class, //스캔 범위가 아니고 스스로 configuration을 생성하지 못할 때 추가
         MessageConfig.class,
         InterceptorConfig.class, //DB, Msg, Interceptor, file 설정 클래스 가져와서 사용,
         FileConfig.class}) //여러개일 경우 배열 형태로 작성, 편리한 관리 위해 설정 파일을 분리
+ */
 //@RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer { //webMVC 설정 인터페이스 구현(중요! 암기!)
 
@@ -59,6 +70,7 @@ public class MvcConfig implements WebMvcConfigurer { //webMVC 설정 인터페�
         registry.jsp("/WEB-INF/templates/", ".jsp");
     }
 
+    @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {//static으로 정의해야 함
         //PropertySources / PlaceholderConfigurer : 설정 내용 / 설정 방식
 
@@ -80,5 +92,19 @@ public class MvcConfig implements WebMvcConfigurer { //webMVC 설정 인터페�
         //"application.properties"
 
         return conf;
+    }
+
+    //따로 @JsonFormatter를 정의하지 않아도 공통적으로 JSON 날짜 형식화 해줌
+    @Override //JSON 등 응답 메세지 출력 형식 변환을 위해 사용하는 메서드
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        ObjectMapper objectMapper = Jackson2ObjectMapperBuilder
+                .json() //응답 형식 설정->json으로 자동 변환 , xml로도 변환 가능(의존성 필요)
+                .serializerByType(LocalDateTime.class, new LocalDateTimeSerializer(formatter))
+                .build();
+
+        //converter에 있는 설정은 우선순위 존재
+        //여기서 정의한 설정의 우선순위를 가장 앞으로 설정
+        converters.add(0, new MappingJackson2HttpMessageConverter(objectMapper));
     }
 }

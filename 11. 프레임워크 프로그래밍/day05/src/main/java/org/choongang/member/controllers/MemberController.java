@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.choongang.global.exceptions.BadRequestException;
+import org.choongang.member.entities.Member;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
@@ -12,6 +13,10 @@ import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.IntStream;
 
 @Slf4j
 @Controller //컨트롤러로 동작하는 클래스
@@ -103,7 +108,7 @@ public class MemberController {
     }
 
     //경로 변수 연습
-    @ResponseBody //반환값을 void로 만들기 위해 추가
+    @ResponseBody //반환값을 void로 만들기 위해 추가, rest로 응답하게 만든다
     @GetMapping({"/info/{id}/{id2}", "/info/{id}"}) //경로 변수 설정(복수개 가능), 바뀔 수 있는 값->변수 자료형에 따라 형변환해서 주입
     public void info(@PathVariable("id") String email, @PathVariable(name="id2", required = false) String email2) {
         //required=false를 통해 id2에 값이 없으면 null 값으로 대체되어 출력됨
@@ -113,6 +118,22 @@ public class MemberController {
         //url->http://localhost:3000/day05/member/info/email11/email22
         //결과->INFO o.c.m.c.MemberController - email:email11, email2:email22
     }
+
+    @ResponseBody //일반 컨트롤러에서 rest로 응답하게 만들어줌
+    @GetMapping("/list2")
+    public List<Member> list() {
+        List<Member> members = IntStream.rangeClosed(1, 10)
+                .mapToObj(i->Member.builder() //멤버 객체로 바꿔줌
+                        .email("user" + i + "@test.org")
+                        .password("12345678") //비번=가장 민감한 개인정보->JSON 변환 제외
+                        .userName("user" + i)
+                        .regDt(LocalDateTime.now())
+                        .build())
+                .toList();
+
+        return members;
+    }
+
     
 //    @ExceptionHandler({Exception.class})
 //    public String errorHandler(Exception e, HttpServletRequest request, HttpServletResponse response, Model model) { //에러 페이지는 초반에 세팅하는 것이 좋다
