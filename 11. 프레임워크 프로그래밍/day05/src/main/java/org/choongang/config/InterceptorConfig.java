@@ -1,13 +1,9 @@
 package org.choongang.config;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.choongang.global.interceptors.MemberOnlyInterceptor;
 import org.choongang.member.MemberUtil;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -21,8 +17,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
     private final MemberUtil memberUtil;
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry) { //addInterceptors: 인터셉터를 설정하는 메서드
+    public void addInterceptors(InterceptorRegistry registry) {
+        /*
+        //addInterceptors: 인터셉터를 설정하는 메서드
         registry.addInterceptor(new HandlerInterceptor() { //addInterceptor: HandlerInterceptor 객체를 설정
+
             @Override
             public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
@@ -31,7 +30,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 modelAndView.addObject("loggedMember", memberUtil.getMember());
             }
         });
-
+        */
         registry.addInterceptor(memberOnlyInterceptor)
                 .addPathPatterns("/mypage/**"); //Ant 패턴
         //마이 페이지를 포함한 모든 경로 등록

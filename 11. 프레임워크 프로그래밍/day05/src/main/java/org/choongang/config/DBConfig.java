@@ -27,10 +27,11 @@ public class DBConfig extends AbstractJdbcConfiguration { //DB 설정 클래스 
         DataSource ds = new DataSource();
 
         //연결 설정 S
+        //계정을 직접 입력해서 설정하면 해킹 위험 높음->환경변수로 설정
         ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
         ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-        ds.setUsername("SPRING");
-        ds.setPassword("oracle");
+        ds.setUsername(System.getenv("db.username"));
+        ds.setPassword(System.getenv("db.password"));
         //연결 설정 E
 
         //DB 서버와 연결=커넥션

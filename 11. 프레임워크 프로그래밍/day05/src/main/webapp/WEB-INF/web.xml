@@ -24,6 +24,11 @@
             </param-value>
         </init-param>
         <!--스캔 범위가 org.choongang으로 기본 설정됨-->
+<!--        <init-param>-->
+<!--            <param-name>spring.profiles.active</param-name>-->
+<!--            <param-value>prod</param-value>-->
+<!--        </init-param>-->
+        <!--프로파일 설정을 바꾸고 싶을 때 값을 계속 바꿔줘야 하는 단점 있음-->
         <!--파일 설정, 파일 용량 등을 정의-->
         <multipart-config>
             <max-file-size>20971520</max-file-size> <!--한 파일 당 최대 용량 20mb-->
