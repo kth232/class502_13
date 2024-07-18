@@ -15,15 +15,16 @@
                 const box1 = document.querySelector('.box1');
                 const box2 = document.querySelector('.box2');
                 const box3 = document.querySelector('.box3');
-                box1.addEventListener('click', function() {
-                    console.log('box1');
-                }); //캡처링 단계/클릭 전파, 버블링 단계
+                //중첩구조
+                box1.addEventListener('click', function() { //클릭 이벤트 부여
+                    console.log('box1 click');
+                }); //캡처링 단계-타켓을 잡기 위해 캡처함/ 버블링 단계에서 클릭 전파
                 box2.addEventListener('click', function() {
-                    console.log('box2');
-                }, true); //캡처링 단계, 클릭 전파/ 버블링 단계
+                    console.log('box2 click');
+                }, true); //캡처링 단계에서 클릭 전파/ 버블링 단계 전파 x
                 box3.addEventListener('click', function(e) {
-                    e.stopPropagation(); //이벤트 전파 취소
-                    console.log('box3'); 
+                    e.stopPropagation(); //이벤트 전파 취소-버블링 단계에만 취소됨
+                    console.log('box3 click'); 
                 }); //타겟 단계-이벤트 실행
             });
         </script>

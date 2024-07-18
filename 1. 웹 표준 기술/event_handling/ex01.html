@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <!-- <script src="js/script.js"></script>
+        <script src ="js/script2.js"></script> //스크립트가 대체됨 -->
     </head>
     <body>
         <script>
@@ -14,15 +16,16 @@
             
             /*
             window.addEventListener('DOMContentLoaded', function () {
-                const buttonEl = document.getElementById('button');
-                buttonEl.onclick =  function() {
+                const buttonEl = document.getElementById('button'); //속성 = 변수
+                buttonEl.onclick =  function() { //함수 객체에 값이 들어가게 됨
                     alert('click1');
                 };
                 buttonEl.onclick = function() {
-                    alert('click2'); //마지막 걸로 대체되어 오류 발생 가능성
+                    alert('click2'); //마지막 걸로 대체되어 오류 발생 가능성->이벤트 리스너 사용
                 }
             });
             */
+
         </script>
         <button type="button" id="button">click</button>
         <script>

@@ -5,9 +5,9 @@
     </head>
     <body>
         <script>
-            window.addEventListener("DOMContentLoaded", function() {
+            window.addEventListener("DOMContentLoaded", function() { //이벤트 처리기로 등록
                 const buttonEl = document.getElementById("button");
-                buttonEl.addEventListener("click", function(){
+                buttonEl.addEventListener("click", function(){ //이벤트 2개가 모두 동작함
                     alert('click1');
                 });
                 buttonEl.addEventListener('click',function() {
