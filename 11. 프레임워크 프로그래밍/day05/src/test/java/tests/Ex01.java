@@ -77,10 +77,10 @@ public class Ex01 {
         RestTemplate restTemplate = new RestTemplate();
 
         RequestJoin form = new RequestJoin(); //요청 데이터로 보낼 커맨드 객체 생성
-        form.setEmail("user98@test.org");
+        form.setEmail("user95@test.org");
         form.setPassword("12345678");
         form.setConfirmPassword(form.getPassword());
-        form.setUserName("user98");
+        form.setUserName("user95");
         form.setAgree(true);
 
         String params = om.writeValueAsString(form);
@@ -102,10 +102,10 @@ public class Ex01 {
         RestTemplate restTemplate = new RestTemplate();
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("email", "user97@test.org");
+        params.add("email", "user96@test.org");
         params.add("password", "12345678");
         params.add("confirmPassword", "12345678");
-        params.add("userName", "user97");
+        params.add("userName", "user96");
         params.add("agree", "true");
 
         HttpHeaders headers = new HttpHeaders();
@@ -113,7 +113,7 @@ public class Ex01 {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
 
-        String url = "http://localhost:3000/day05/api/member/join";
+        String url = "http://localhost:3000/day05/member/join";
         //스트링에 미리 정의된 multivalueMap->알아서 변환됨
 
         ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
