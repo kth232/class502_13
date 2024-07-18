@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Configuration
-@EnableWebMvc //webMVC 알아서 설정 세팅해줌 <-원래는 관리 객체를 다 설정해줘야 함
+@EnableWebMvc //webMVC 알아서 설정 세팅해줌 <-원래는 관리 객체를 다 설정해줘야 함, 한군데에만 넣으면 필요한 모든 객체 만들어줌
 @ComponentScan("org.choongang") //자동 스캔, 수동 등록 빈은 특수한 상황을 제외하고는 잘 안만든다
 /*
 @Import({DBConfig.class, //스캔 범위가 아니고 스스로 configuration을 생성하지 못할 때 추가
@@ -65,10 +65,12 @@ public class MvcConfig implements WebMvcConfigurer { //webMVC 설정 인터페�
     }
 
     //필수 메서드
+    /*
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         registry.jsp("/WEB-INF/templates/", ".jsp");
     }
+    */
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {//static으로 정의해야 함

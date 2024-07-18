@@ -1,7 +1,11 @@
 package org.choongang.member.api.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.choongang.global.Utils;
+import org.choongang.global.exceptions.BadRequestException;
+import org.choongang.global.rests.JSONData;
 import org.choongang.member.controllers.RequestJoin;
 import org.choongang.member.entities.Member;
 import org.choongang.member.mappers.MemberMapper;
@@ -9,6 +13,7 @@ import org.choongang.member.services.JoinService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -23,18 +28,38 @@ public class ApiMemberController {
     //사실 서비스로 개발하는 것이 좋지만 json 연습용으로 컨트롤러 구현
     private final MemberMapper mapper;
     private final JoinService joinService;
+    private final Utils utils;
 
-    @PostMapping("") //POST /api/member
-    public ResponseEntity join(@RequestBody RequestJoin form) { //@RequestBody 추가해야 json형식으로 데이터 변환
-        //log.info(form.toString());
+    @PostMapping //POST /api/member
+    public ResponseEntity join(@RequestBody @Valid RequestJoin form, Errors errors) { //@RequestBody 추가해야 json형식으로 데이터 변환
+        //에러 검증 처리, rest 형식으로 개발할 때는 직접 정의해야 함
+        //초반에 세팅하는 부분
+        if(errors.hasErrors()){ //errors 객체에 있는 정보 가공
+            //공통 error 메세지 유틸 사용
+            throw new BadRequestException(utils.getErrorMessages(errors));
+            /*
+            errors.getFieldErrors().forEach(System.out::println);
+            errors.getGlobalErrors().forEach(System.out::println);
+
+            return ResponseEntity.badRequest().build();
+             */
+        }
+
+        /*
+        boolean result = false;
+        if(!result) {
+            throw new BadRequestException("예외 테스트"); //에러도 JSON 형식으로 통일성 있게 응답하는 것이 좋다.
+        }
+        */
         joinService.process(form); //회원가입 서비스 추가
 
         //응답 코드가 201, 출력 바디 데이터x
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/info/{email}") //경로 변수
-    public Member info(@PathVariable("email") String email) { //반환값이 자바 객체
+    /*
+    @GetMapping("/info3/{email}") //경로 변수
+    public Member info3(@PathVariable("email") String email) { //반환값이 자바 객체
         //Content-type: application/json
         //json formatter(확장 프로그램)를 사용해서 형식에 맞게 출력
         Member member = mapper.get(email); 
@@ -42,8 +67,29 @@ public class ApiMemberController {
         return member;
     }
 
+    @GetMapping("/info2/{email}") //경로 변수
+    public ResponseEntity info2(@PathVariable("email") String email) { //반환값이 responseEntity
+        //Content-type: application/json
+        //json formatter(확장 프로그램)를 사용해서 형식에 맞게 출력
+        Member member = mapper.get(email);
+
+        return ResponseEntity.ok(member); //응답코드 반환
+    }
+    */
+
+    @GetMapping("/info/{email}") //경로 변수
+    public JSONData info(@PathVariable("email") String email) { //반환값이 JSONData
+        //Content-type: application/json
+        //json formatter(확장 프로그램)를 사용해서 형식에 맞게 출력
+        Member member = mapper.get(email);
+        //성공해서 응답코드가 200일 때는 responseEntity 사용 안해도 됨
+        //형식을 통일해서 응답
+
+        return new JSONData(member);
+    }
+
     @GetMapping("/list")
-    public ResponseEntity<List<Member>> list() {
+    public ResponseEntity<JSONData> list() { //<List<Member>>
         List<Member> members = IntStream.rangeClosed(1, 10)
                 .mapToObj(i->Member.builder() //멤버 객체로 바꿔줌
                         .email("user" + i + "@test.org")
@@ -57,7 +103,7 @@ public class ApiMemberController {
         headers.add("t1", "v1");
         headers.add("t2", "v2");
 
-        return new ResponseEntity<>(members, headers, HttpStatus.OK); //상태코드 201
+        return new ResponseEntity<>(new JSONData(members), headers, HttpStatus.OK); //바디 데이터, 헤더, 상태코드 201
     }
 
     @GetMapping(path="/test", produces= "text/html;charset=UTF-8") //응답 헤더에 content-type 설정
@@ -71,4 +117,22 @@ public class ApiMemberController {
     public void test2() { //RestController는 void형 가능->내부적으로 처리
         log.info("test2.."); // 응답 바디 없음
     }
+
+    /*
+    @ExceptionHandler(Exception.class) //가장 상위 클래스로 정의해서 모든 예외가 유입되도록 함
+    public ResponseEntity<JSONData> errorHandler(Exception e) {
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; //500
+        //개발자가 정의한 예외이면 가져와서 해당 응답코드로 처리
+        if(e instanceof CommonException commonException){
+            status= commonException.getStatus();
+        }
+        JSONData data = new JSONData();
+        data.setSuccess(false);
+        data.setMessage(e.getMessage());
+        data.setStatus(status);
+
+        e.printStackTrace();
+        return ResponseEntity.status(status).body(data);
+    }
+    */
 }

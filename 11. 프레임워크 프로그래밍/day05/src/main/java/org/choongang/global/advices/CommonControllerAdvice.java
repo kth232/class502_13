@@ -42,7 +42,7 @@ public class CommonControllerAdvice {
 
         if(e instanceof CommonException commonException) { //예외 출처 확인, 다형성(유연성)-> 안전한 캐스팅이 목적
             //CommonException commonException = (CommonException) e; //형변환->어짜피 할 것을 알기 때문에 생략 가능하게 바뀜
-            status = commonException.getStatus();//응답코드 가져오기
+            status = commonException.getStatus(); //응답코드 가져오기
         }
 
         //스프링이 제공하는 ModelAndView의 상태 코드 상세 설정 기능
