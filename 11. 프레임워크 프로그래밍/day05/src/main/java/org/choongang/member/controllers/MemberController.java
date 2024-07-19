@@ -4,13 +4,13 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.entities.Member;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
 import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -94,6 +94,33 @@ public class MemberController {
     }
 
     @GetMapping("/list")
+    public String list2(Model model) {
+        /*
+        Member member = Member.builder()
+                .email("user01@test.org")
+                .password("12345678")
+                .userName("<h1>user01")
+                .regDt(LocalDateTime.now())
+                .build();
+
+        model.addAttribute("member", member);
+        */
+
+        //10명 유저 만들기(스트림<-편의성 좋음)
+        List<Member> items = IntStream.rangeClosed(1, 10)
+                .mapToObj(i -> Member.builder()
+                        .email("user" + i + "@test.org")
+                        .userName("user" + i)
+                        .regDt(LocalDateTime.now())
+                        .build())
+                .toList();
+        model.addAttribute("items", items); //정보 객체(스프링 기능과 연관), request가 아닌 session에 저장
+
+        return "member/list";
+    }
+
+    /*
+    @GetMapping("/list")
     public String list(@ModelAttribute MemberSearch search, Errors errors) { //에러 객체
         //요청 파라미터가 없더라도 search 객체에 null x
         //커맨드 객체 필드에 자동 바인딩->search 객체가 모델에 추가됨, 뷰에서 참조
@@ -106,6 +133,7 @@ public class MemberController {
 
         return "member/list";
     }
+    */
 
     //경로 변수 연습
     @ResponseBody //반환값을 void로 만들기 위해 추가, rest로 응답하게 만든다
@@ -123,7 +151,7 @@ public class MemberController {
     @GetMapping("/list2")
     public List<Member> list() {
         List<Member> members = IntStream.rangeClosed(1, 10)
-                .mapToObj(i->Member.builder() //멤버 객체로 바꿔줌
+                .mapToObj(i-> Member.builder() //멤버 객체로 바꿔줌
                         .email("user" + i + "@test.org")
                         .password("12345678") //비번=가장 민감한 개인정보->JSON 변환 제외
                         .userName("user" + i)

@@ -24,7 +24,7 @@ public class RestCommonControllerAdvice {
 
             Map<String, List<String>> errorMessages = commonException.getErrorMessages();
             if(errorMessages != null) message = errorMessages;
-            //커맨드 객체 검증에서 던져진 예외
+            //커맨드 객체 검증에서 던져진 예외, null이면 일반 메세지
         }
 
         //JSON 형태로 통일성 있게 출력, 커맨드 객체 검증

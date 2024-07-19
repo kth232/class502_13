@@ -7,7 +7,7 @@
     가입일 조회(예: 20240716)<br>
     <form:input path="sDate" />
     <form:errors path="sDate" />
-    <%--에러 코드 연동--%>
+    <%--에러 코드 연동, 커스텀 태그--%>
     ~
     <form:input path="eDate" />
     <form:errors path="eDate" />

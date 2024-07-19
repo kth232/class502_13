@@ -58,7 +58,7 @@ public class Utils {
                             return ""; //비어있는 메세지는 안나옴
                         }
                     })
-                .filter(s -> s != null && !s.isBlank()) //null이 아니고 blank가 아닐 때
+                .filter(s -> !s.isBlank()) //s != null &&, null이 아니고 / blank가 아닐 때
                 .toList(); //리스트 형태로 만듦
         
         ms.setUseCodeAsDefaultMessage(true); //싱글톤으로 관리하기 때문에 사용하면 다시 원래 상태로 돌려줌

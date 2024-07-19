@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<!--th 명령어 반드시 입력해줘야 변역해줌, 없으면 안해줌-->
+    <body>
+        <h1>회원 정보</h1>
+        <th:block th:object="${member}">
+            <!--div태그로 감싸서 member로 고정-->
+            <!--th:block으로 감싸면 태그 출력 안됨-->
+            <dl>
+                <dt th:text="#{이메일: }">이메일</dt>
+                <!--메세지식: #{코드} 코드와 일치하는 값으로 대체-->
+                <dd th:text="*{email}"></dd>
+                    <!--선택 변수식 사용으로 코드 길이 단축-->
+    <!--            <dd th:text="${member.email}">example_data</dd>-->
+                <!--th:text -> 텍스트 출력하는 타임리프 명령어-->
+                <!--직접 값을 넣는 것이 아니라 속성으로 입력, 번역 시 대체됨-->
+            </dl>
+            <dl>
+                <dt th:text="#{회원명: }">회원명</dt>
+                <dd th:utext="*{userName}"></dd>
+                <!--th:text는 문자열만 번역, utext는 html태그도 번역해줌-->
+    <!--            <dd th:text="${member.userName}"></dd>-->
+            </dl>
+            <dl>
+                <dt th:text="#{가입일: }">가입일</dt>
+                <dd th:text="*{#temporals.format(regDt, 'yy.MM.dd HH:mm')}"></dd>
+    <!--            <dd th:text="${#dates.format(member.regDt, 'yyyy-MM-dd HH:mm')}"></dd>-->
+                <!--Java8TimeDialect()는 temporals로 포맷팅 적용-->
+            </dl>
+
+            <a href="#" th:href="@{/member/login}" th:text="#{로그인1}"></a>
+            <!--a href=""자리에 th:href에 입력한 값으로 대체됨-->
+            <!--같은 href 속성이 2개 있는 상태, a의 href가 없어도 th:href가 대체되어 링크 연결됨-->
+            <!--예) <a th:href="@{/member/login}" th:text="#{로그인}"></a>-->
+            <br>
+            <a th:href="@{member/login(p1=*{email}, p2=*{userName})}" th:text="#{로그인2}"></a>
+            <!--소괄호 안에 이름, 값 쌍으로 파라미터 값을 쿼리스트링으로 추가할 수 있음, 인코딩 되어있는 상태
+            th:block 태그 밖에서 사용하면 값 적용 안됨-->
+            <br>
+            <a th:href="@{/member/info/{email}(email=*{email})}" th:text="#{로그인3}"></a>
+            <!--{}에 교체될 부분 정의, 소괄호 안에 정의한 값으로 변수처럼 값 대체 가능-->
+            <br>
+            <a th:href="@{/member/info/{email}/{email2}(email=*{email}, email2=*{userName})}" th:text="#{로그인4}"></a>
+            <!--각 위치에 값 대입-->
+            <br>
+            </th:block>
+            <a th:href="@{/member/login(p1=${member.email}, p2=${member.userName})}" th:text="#{로그인5}"></a>
+            <!--th:block 밖에서 사용해야 한다면 el식 사용-->
+    </body>
+</html>

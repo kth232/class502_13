@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<!--th 명령어 반드시 입력해줘야 변역해줌, 없으면 안해줌-->
+    <body>
+
+        <table border="1">
+            <!--속성으로 css 효과 주지 말라는 권장사항, 고정되어 버리기 때문-->
+            <thead>
+            <tr>
+                <th>순번</th>
+                <th>이메일</th>
+                <th>회원명</th>
+                <th>가입일</th>
+            </tr>
+            </thead>
+            <tbody>
+                <!--반복문, 태그 자체를 반복, 속성으로 입력-->
+                <!--item이 노출된 이후=타임리프 식 뒤쪽에 th:object 사용 가능,
+                앞에도 가능, 노출된 라인 내 정의하면 가능한 듯?
+                선택 변수식 이용 시 한 줄로 짧게 작성하는 것 권장-->
+                <!--status: 반복에 대한 정보, 독립적인 객체=el식 사용, 변수명은 변경 가능
+                현재 반복 요소에서 ',' 뒤에 status 지정-->
+                <tr th:each="item, status: ${items}" th:object="${item}" class="item" th:classappend="${status.even} ? 'on': ''">
+<!--                    <td th:text="${item.email}"></td>-->
+<!--                    <td th:text="${item.userName}"></td>-->
+<!--                    <td th:text="${item.regDt}"></td>-->
+                    <td>
+                        <!--status 속성 입력-->
+                        순번:[[${status.count}]]
+                        / 첫번째: [[${status.first}]]
+                        / 마지막: [[${status.last}]]
+<!--                        / 짝수: [[${status.even}]]-->
+<!--                        / 홀수: [[${status.odd}]]-->
+                        <th:block th:switch="${s.even}">
+                            <span th:case="true">짝수</span>
+                            <span th:case="false">홀수</span>
+                        </th:block>
+                        <!--
+                        <th:block th:if="${status.even}">even</th:block>
+                        <th:block th:if="${status.odd}">odd</th:block>
+                        <th:block th:unless="${status.even}">odd</th:block>
+                        -->
+                    </td>
+<!--                    <td th:text="${status.count}"></td>-->
+                    <!--th:object에 정의한 하위 속성에 접근해야지만 *{} 작성 가능-->
+                    <td th:text="*{email}"></td>
+                    <td th:text="*{userName}"></td>
+                    <td th:text="*{#temporals.format(regDt, 'yy.MM.dd HH:mm')}"></td>
+                    <!--포맷팅-->
+                </tr>
+                <!--
+                <tr th:each="item : ${items}" th:object="${item}" >
+                    <td th:text="*{email}"></td>
+                    <td th:text="*{userName}"></td>
+                    <td th:text="*{regDt}"></td>
+                </tr>
+                -->
+            </tbody>
+        </table>
+        <!--상수로 바로 인식-->
+        <h1 th:if="true">항상 노출</h1>
+        <h1 th:if="false">항상 미노출</h1>
+    </body>
+</html>

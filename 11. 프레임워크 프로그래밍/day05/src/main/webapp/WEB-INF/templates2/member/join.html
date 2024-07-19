@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--네임 스페이스 기준으로 문법 적용, 관례적으로 th 사용, 태그 속성 형태로 설정(속성 교체 방식으로 동작)-->
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+<h1>회원가입</h1>
+<!--el식 속성으로 커맨드 객체 넘어옴, 공통으로 사용하기 위해 고정, 선택 변수식 사용
+항목이 많은 체크박스나 라디오버튼 같은 것도 자동으로 선택됨-->
+<form method="post" autocomplete="off" th:object="${requestJoin}">
+    <dl>
+        <dt th:text="#{이메일}">이메일</dt>
+        <!--타임리프를 사용하는 경우 기존값을 유지한 채 속성으로 교체됨
+        내추럴 템플릿 지향!-->
+
+        <dd>
+            <!--jsp를 사용하는 경우 원본 데이터를 전부 수정해야 함, 직접 값을 넣어주면 그대로 출력됨->교체 필요-->
+<!--            <input type="text" name="email" value="${requestJoin.email}">-->
+<!--            <input type="text" name="email" th:value="${requestJoin.email}" value="user01@test.org">-->
+            <!--서버에서 오픈한 파일은 el식 자리에 value값으로 대체됨-->
+            <input type="text" name="email" th:field="*{email}">
+            <!--th:field로 입력해야 연동됨, value 같이 쓰면 안됨-->
+            <div th:each="err: ${#fields.errors('email')}" th:text="${err}"></div>
+            <!--err에 에러 메세지를 담음, 반복해서 에러 메세지를 가져오고 담아주고 th:text에서 출력함-->
+        </dd>
+    </dl>
+    <dl>
+        <dt>비밀번호</dt>
+        <dd>
+            <input type="password" name="password" th:field="*{password}">
+            <div th:each="err: ${#fields.errors('password')}" th:text="${err}"></div>
+            <!--err에 에러 메세지를 담음, 반복해서 가져오고 담아주고 th:text에서 출력함-->
+        </dd>
+    </dl>
+    <dl>
+        <dt>비밀번호 확인</dt>
+        <dd>
+            <input type="password" name="confirmPassword" th:field="*{confirmPassword}">
+            <div th:each="err: ${#fields.errors('confirmPassword')}" th:text="${err}"></div>
+        </dd>
+    </dl>
+    <dl>
+        <dt>회원명</dt>
+        <dd>
+            <input type="text" name="userName" value="user01" th:field="*{userName}" >
+            <div th:each="err: ${#fields.errors('userName')}" th:text="${err}"></div>
+        </dd>
+    </dl>
+    <div>
+        <input type="checkbox" name="agree" value="true" id="agree" th:field="*{agree}">
+        <label for="agree">회원가입 약관에 동의합니다.</label>
+        <div th:each="err : ${#fields.errors('agree')}" th:text="${err}"></div>
+    </div>
+    <button type="submit">가입하기</button>
+</form>
+</body>
+</html>
