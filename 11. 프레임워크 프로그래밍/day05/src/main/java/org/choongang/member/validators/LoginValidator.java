@@ -44,6 +44,7 @@ public class LoginValidator implements Validator { //validator를 정의해야 �
             if(member == null) {
                 //errors.rejectValue("email", "Check.emailPassword");
                 errors.reject("Check.emailPassword");
+                //글로벌 에러 검증(필드 명시 x)
             }
             if (member != null && StringUtils.hasText(password) && !BCrypt.checkpw(password, member.getPassword())) {
                 //해시회된 비번과 사용자 입력 비번의 일치 유무 확인

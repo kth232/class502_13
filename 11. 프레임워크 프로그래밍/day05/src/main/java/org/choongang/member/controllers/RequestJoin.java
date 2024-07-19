@@ -10,7 +10,7 @@ import lombok.Data;
 public class RequestJoin {
     @NotBlank //(message = "이메일을 입력하세요") //공백 유무 검증, 검증 메세지 정의 가능
     @Email //(message = "이메일 형식이 아닙니다.") //validation 1순위 검증->validator 2순위 검증
-    private String email;
+    private String email; //필드=input태그의 name 속성
 
     @NotBlank
     @Size(min=8) //최소 8자리

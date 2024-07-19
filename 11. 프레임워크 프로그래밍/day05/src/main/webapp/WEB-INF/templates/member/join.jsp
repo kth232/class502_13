@@ -65,6 +65,7 @@ modelAttribute="requestJoin" ->어떤 모델을 사용하는지 커맨드 객체
 <%--            <label for="agree">회원가입 약관에 동의합니다.</label>--%>
             <form:checkbox path="agree" value="true" label="회원가입 약관에 동의합니다." />
             <form:errors path="agree" element="div" delimiter="" />
+            <%--필드 에러 명시--%>
         </dd>
     </dl>
     <button type="reset">

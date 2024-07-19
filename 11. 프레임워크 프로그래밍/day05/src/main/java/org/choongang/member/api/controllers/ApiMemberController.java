@@ -32,10 +32,12 @@ public class ApiMemberController {
 
     @PostMapping //POST /api/member
     public ResponseEntity join(@RequestBody @Valid RequestJoin form, Errors errors) { //@RequestBody 추가해야 json형식으로 데이터 변환
-        //에러 검증 처리, rest 형식으로 개발할 때는 직접 정의해야 함
+        //커맨드 객체(=사용자 입력값)에 대한 검증 처리, rest 형식으로 개발할 때는 직접 정의해야 함
+        //Error는 필드 에러, 글로벌 에러 정보 확인하는 메서드 가짐
         //초반에 세팅하는 부분
         if(errors.hasErrors()){ //errors 객체에 있는 정보 가공
-            //공통 error 메세지 유틸 사용
+            //원래는 에러 코드(application.properties) 반환
+            //공통 error 메세지 유틸 사용, 에러 코드에 맞는 메세지 출력
             throw new BadRequestException(utils.getErrorMessages(errors));
             /*
             errors.getFieldErrors().forEach(System.out::println);

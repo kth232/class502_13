@@ -33,6 +33,7 @@
     </div>
 
     <form:errors element="div" delimiter="" />
+    <%--글로벌 에러 명시--%>
 
     <button type="submit">
         <spring:message code="로그인" />

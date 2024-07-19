@@ -12,7 +12,8 @@ public class CommonException extends RuntimeException{ //공통 예외
 
     private HttpStatus status; //응답코드 상수 정의됨
 
-    private Map<String, List<String>> errorMessages; //에러 메세지
+    private Map<String, List<String>> errorMessages; //커맨드 객체 검증 실패 시 에러 메세지 담아줌
+    //->츨력을 통일성 있게 하기 위함
 
     public CommonException(String message) {
         this(message, HttpStatus.INTERNAL_SERVER_ERROR); //500
