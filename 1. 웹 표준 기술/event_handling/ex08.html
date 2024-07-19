@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            #dropBox {
+                width: 300px;
+                height: 300px;
+                border: 2px dashed blue;
+            }
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                //drag, dragstart, dragend, dragover(요소를 선택해서 끌어와서 올리는 것), drop
+                const dropBox = document.getElementById("dropBox");
+                dropBox.addEventListener("dragover", function(e) {
+                    e.preventDefault(); //이미지 보여주는 기본 동작 막기
+                });
+
+                dropBox.addEventListener("drop", function(e) {
+                    e.preventDefault(); //이미지 보여주는 기본 동작 막기
+                    console.log(e.dataTransfer.files); //datatransfer에 선택한 파일 정보 저장
+
+                    const formData = new FormData();
+                    for (const file of e.dataTransfer.files){
+                        formData.append("file", file);
+                    }
+                    //서버 이슈로 보류
+                    // fetch("주소", {
+                    //     method: "POST",
+                    //     body:formData
+                    // })
+                    //.then((res) => console.log(res));
+                }); 
+            });
+        </script>
+        <div id="dropBox">
+            여기에 업로드할 파일을 드래그해서 올려 주세요.
+        </div>
+    </body>
+</html>

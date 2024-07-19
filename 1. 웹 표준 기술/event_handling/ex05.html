@@ -5,37 +5,55 @@
     </head>
     <body>
         <script>
-            const person = {
-                name:'kim',
-                age: 40,
-                showInfo() {
-                    console.log(this);
-                }, 
-                handleEvent() {// person
-                    console.log('handleEvent', this);
-                }
-            };
-
             window.addEventListener("DOMContentLoaded", function() {
+                const person = {
+                    name: "이이름",
+                    age: 40,
+                    // showInfo() {
+                    //     console.log(this);
+                    // }, 
+                    handleEvent() {
+                        const nameEl = document.getElementById("name");
+                        const ageEl = document.getElementById("age");
+                        nameEl.innerHTML = this.name;
+                        ageEl.innerHTML = this.age; 
+                        //console.log(person);
+                    }
+                };
 
-                function handleClick() {
-                    console.log(this);
+                /* 
+                function showInfo() {
+                    const nameEl = document.getElmentById("name");
+                    const ageEl = document.getElementById("age");
+                    nameEl.innerHTML = this.name;
+                    ageEl.innerHTML = this.age; 
                 }
+                */
 
-                handleClick = handleClick.bind(person);
+
+                // function handleClick() {
+                //     console.log(this);
+                // }
+
+                // handleClick = handleClick.bind(person);
 
                 const buttonEl = document.getElementById('button');
-                // buttonEl.addEventListener('click', handleClick);
+                buttonEl.addEventListener('click', person);
+                //buttonEl.addEventListener('click', handleClick);
 
                 /*
                 buttonEl.addEventListener('click', function() {
                     person.showInfo();
                 });
                 */
-               buttonEl.addEventListener('click', person); //person.handleEvent
+               //buttonEl.addEventListener('click', person); //person.handleEvent
             });
 
         </script>
-         <button type="button" id="button">click</button>
+        <button type="button" id="button">클릭!</button>
+        <div>
+            이름: <span id="name"></span>
+            나이 : <span id="age"></span>
+        </div>
     </body>
 </html>

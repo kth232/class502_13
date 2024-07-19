@@ -16,16 +16,27 @@
                 const box2 = document.querySelector('.box2');
                 const box3 = document.querySelector('.box3');
                 //중첩구조
-                box1.addEventListener('click', function() { //클릭 이벤트 부여
+                box1.addEventListener('click', function(e) { //클릭 이벤트 부여
                     console.log('box1 click');
                 }); //캡처링 단계-타켓을 잡기 위해 캡처함/ 버블링 단계에서 클릭 전파
-                box2.addEventListener('click', function() {
+
+
+                box2.addEventListener('click', function(e) {
                     console.log('box2 click');
-                }, true); //캡처링 단계에서 클릭 전파/ 버블링 단계 전파 x
-                box3.addEventListener('click', function(e) {
+                }, false); //캡처링 단계에서 클릭 전파/ 버블링 단계 전파 x
+
+
+                box3.addEventListener('click', function(e) { //이벤트 객체 명시<-이벤트 정보가 담겨있다
                     e.stopPropagation(); //이벤트 전파 취소-버블링 단계에만 취소됨
-                    console.log('box3 click'); 
+                    //현재 자신에게 부여된 동일 요소 클릭이벤트만 전파 취소->중복 부여된 다른 이벤트는 수행함
+                    //e.stopImmediatePropagation(); //동일 요소 모든 이벤트 전파 취소
+                    console.log('box3 click1'); 
                 }); //타겟 단계-이벤트 실행
+
+                //box3에 이벤트2 부여->동일한 요소에 이벤트 중복 부여
+                box3.addEventListener("click", function(e) {
+                    console.log("box3 click2");
+                });
             });
         </script>
         <div class="box box1">
