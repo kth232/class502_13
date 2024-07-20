@@ -7,7 +7,10 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -15,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan("member")
-//@EnableJdbcRepositories("member") //spring JDBC
+@EnableJdbcRepositories("member") //spring JDBC
 @EnableTransactionManagement //트랜젝션 설정 자동화
 @MapperScan("mappers") //자동 매퍼 추가, 마이바티스
 public class AppCtx {
@@ -61,5 +64,10 @@ public class AppCtx {
 
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject(); //세션 관리 객체
         return sqlSessionFactory;
+    }
+
+    @Bean
+    public NamedParameterJdbcOperations namedParameterJdbcOperations(DataSource dataSource) {
+        return new NamedParameterJdbcTemplate(dataSource);
     }
 }

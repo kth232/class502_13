@@ -1,6 +1,7 @@
 package member.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller //컨트롤러
 public class MemberController {
     //스프링 컨테이너 안에 서블릿 기본 객체들을 어디서든 사용 가능하도록 편의상 처음부터 생성 및 초기화되어 담겨있음
+
     @Autowired
     private HttpServletRequest request;
 
     @Autowired
+    private HttpServletResponse response;
+
+
+    @Autowired
     private HttpSession session;
+
 
     @GetMapping("member/join")
     public String join(@RequestParam(name = "name", defaultValue = "default") String name) { //@RequestParam 명시해야지만 찾아줌
