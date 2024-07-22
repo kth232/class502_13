@@ -4,10 +4,32 @@ print("def")
 print('') #줄개행
 print('가나다')
 
-#리스트를 이용한 for문
-nums = [10, 20, 30, 40, 50]
-newNums = []
+#일반적인 for문
+fruits = ["apple", "melon", "mango", "banana"]
+for fruit in fruits:
+    print(fruit)
+
+#튜플 요소는 소괄호 가능-> 값쌍을 변수처럼 분해해서 할당 가능
+nums = [(10, 20), (30, 40), (50, 60)]
 for num in nums:
+    print(num)
+
+for (n1, n2) in nums:
+    print("%d + %d = %d" % (n1, n2, n1+n2))
+
+#소괄호 생략 가능
+for n1, n2 in nums:
+    print("%d + %d = %d" % (n1, n2, n1+n2))
+
+#문자열 반복
+for ch in "abcde":
+    print(ch)
+
+
+#리스트를 이용한 for문
+nums2 = [10, 20, 30, 40, 50]
+newNums = []
+for num in nums2:
     newNums.append(num * num)
 print(newNums)
 
@@ -45,6 +67,6 @@ for i in range(2, 10): #2~9
 #리스트 데이터이기 때문에 줄개행 불가
 gugudan = ["%d x %d = %d" % (i, j, i*j) for i in range(2, 10) for j in range(1, 10)]
 print(gugudan)
-for s in gugudan:
+for s in gugudan: #줄개행하려면 반복 출력하는 수 밖에..
     print(s)
 '''
