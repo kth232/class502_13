@@ -56,7 +56,7 @@ def calc(opr, *args): #*변수=가변적인 변수
 
 calc('add', 10, 20, 30)
 calc('null', 10, 20, 30)
-# print(calc)
+
 
 
 def keywords(**kwargs):
