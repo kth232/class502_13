@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!--네임 스페이스 2가지 정의-->
+<!--프론트 앤드에 공통적으로 나오는 화면 정의(헤더, 푸터)-->
+    <head>
+        <meta charset="UTF-8">
+        <title th:if="${pageTitle != null}" th:text="${pageTitle}"></title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+        <th:block layout:fragment="addCss"></th:block>
+
+        <th:block th:if="${addCss != null}">
+            <link rel="stylesheet" type="text/css" th:each="sccFile:${addCss}"
+                th:href="@{/css/{file}.css(file=${cssFile})}">
+        </th:block>
+        <!--css 파일 적용, el식->모델에 적용-->
+        <script th:src="@{/js/common.js}"></script>
+        <!--th 꼭 붙이기, 안붙이면 번역 안됨, 링크식 작성-->
+
+        <th:block th:if="${addScript != null}">
+            <script th:each="jsFile: ${addScript}"
+                    th:src="@{/js/{file}.js(file=${jsFile})}"></script>
+        </th:block>
+        <!--영역을 지정하면 해당 영역 치환됨-->
+        <!--jsFile로 찾고 {file} 자리에 대체됨-->
+    </head>
+    <body>
+        <header th:replace="~{outlines/header::common}"></header>
+        <main layout:fragment="content"></main>
+        <!--이름 지정, 동일한 이름으로 내용 치환됨-->
+        <footer th:replace="~{outlines/footer::common}"></footer>
+        <iframe name="ifrmProcess" class="dn"></iframe>
+    </body>
+</html>

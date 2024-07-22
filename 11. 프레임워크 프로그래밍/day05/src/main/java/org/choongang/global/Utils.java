@@ -15,10 +15,14 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class Utils {
+public class Utils { //빈의 이름-utils
     
     private final MessageSource messageSource;
     private final HttpServletRequest request; //locale 정보 가져오기 위함
+
+    public String toUpper(String str) {
+        return str.toUpperCase();
+    }
     
     public Map<String, List<String>> getErrorMessages(Errors errors) {
         //맵 형태로 필드, 에러메세지 저장,메세지는 필드마다 여러개 나올 수 있기 때문에 리스트형으로 지정

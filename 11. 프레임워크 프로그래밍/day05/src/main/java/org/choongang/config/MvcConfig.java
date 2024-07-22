@@ -63,6 +63,8 @@ public class MvcConfig implements WebMvcConfigurer { //webMVC 설정 인터페�
         registry.addViewController("/mypage") // 패턴 입력 가능->/mypage/**: mypage를 포함한 모든 하위 패키지
                 .setViewName("mypage/index");
     }
+    //컨트롤러 사용x->모델 사용x
+    //컨트롤러 없이 특정 css를 적용하려면? 치환 영역을 추가해준다->html코드 참고
 
     //필수 메서드
     /*

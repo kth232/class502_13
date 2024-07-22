@@ -116,6 +116,10 @@ public class MemberController {
                 .toList();
         model.addAttribute("items", items); //정보 객체(스프링 기능과 연관), request가 아닌 session에 저장
 
+        model.addAttribute("addCss", new String[] {"member/style", "member/list"});
+
+        model.addAttribute("addScript", new String[] {"member/common", "member/list"});
+
         return "member/list";
     }
 

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main}">
+<main layout:fragment="content">
 <!--th 명령어 반드시 입력해줘야 변역해줌, 없으면 안해줌-->
     <body>
-
         <table border="1">
             <!--속성으로 css 효과 주지 말라는 권장사항, 고정되어 버리기 때문-->
             <thead>
@@ -31,7 +33,7 @@
                         / 마지막: [[${status.last}]]
 <!--                        / 짝수: [[${status.even}]]-->
 <!--                        / 홀수: [[${status.odd}]]-->
-                        <th:block th:switch="${s.even}">
+                        <th:block th:switch="${status.even}">
                             <span th:case="true">짝수</span>
                             <span th:case="false">홀수</span>
                         </th:block>
@@ -43,9 +45,10 @@
                     </td>
 <!--                    <td th:text="${status.count}"></td>-->
                     <!--th:object에 정의한 하위 속성에 접근해야지만 *{} 작성 가능-->
-                    <td th:text="*{email}"></td>
+                    <td th:text="*{#strings.concat(userName, '(', @utils.toUpper(email), ')')}"></td>
+                    <!--소괄호로 감싸기-->
                     <td th:text="*{userName}"></td>
-                    <td th:text="*{#temporals.format(regDt, 'yy.MM.dd HH:mm')}"></td>
+                    <td th:text="*{#temporals.format(regDt, 'yyyy.MM.dd HH:mm')}"></td>
                     <!--포맷팅-->
                 </tr>
                 <!--
@@ -60,5 +63,13 @@
         <!--상수로 바로 인식-->
         <h1 th:if="true">항상 노출</h1>
         <h1 th:if="false">항상 미노출</h1>
+
+        <div th:text="${#numbers.formatInteger(100000000, 3, 'COMMA')}"></div>
+
+        <div th:each="num : ${#numbers.sequence(1, 10, 2)}">
+            <div th:text="${num}"></div>
+        </div>
+        <div th:text="${@utils.toUpper('abc')}"></div>
     </body>
+</main>
 </html>

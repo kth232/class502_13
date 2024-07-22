@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <!--형식 변경됨, 잘 확인할 것!-->
+        <header th:replace="~{outlines/header::common}"></header>
+        <!--templates2가 기준, 상대경로 입력, 명칭이 다르면 다른 것도 연동 가능-->
+        <main>
+            <h1>contents</h1>
+        </main>
+        <footer th:replace="~{outlines/footer::common}"></footer>
+    </body>
+</html>
