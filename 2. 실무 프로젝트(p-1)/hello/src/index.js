@@ -4,7 +4,7 @@ import './index.css';
 import App from './App'; //import 뒤에 변수명 지정 가능
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')); //document 객체 동적 추가
 root.render(
   <React.StrictMode>
     <App />

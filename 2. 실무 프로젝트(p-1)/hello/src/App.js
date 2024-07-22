@@ -36,12 +36,11 @@ import {fragment} from 'react';
 <fragment></fragment>
 */
 
-
 const App = () => {
   const name = 'js';
   const style = {
-    backgroundColor : "orange",
-    color: "white",
+    backgroundColor: 'orange',
+    color: 'white',
     height: '100px',
   };
   return (
