@@ -19,10 +19,10 @@ print(minus(30))
 
 #기본값 설정이 가능하기 때문에 메서드 오버로드가 필요없다
 #단, 기본값을 설정할 땐 가장 마지막 매개변수부터 지정해야 함
-def add(a, b = 20): #b 기본값=20
+def add2(a, b = 20): #b 기본값=20
     return a + b
 
-result = add(10) #b=20
+result = add2(10) #b=20
 print(result)
 
 '''
@@ -34,9 +34,10 @@ result = add(20) #b=20?
 print(result)
 '''
 
-# def add(*args): #튜플형으로 반환
-# ???
-# add(10, 20, 30, 40)
+def add3(*args):
+    print(args)
+
+add3(10, 20, 30, 40) #튜플형으로 반환
 
 
 def calc(opr, *args): #*변수=가변적인 변수
@@ -52,7 +53,8 @@ def calc(opr, *args): #*변수=가변적인 변수
         for num in args:
             result *= num
 
-    return result
+    return print(result)
+
 
 calc('add', 10, 20, 30)
 calc('null', 10, 20, 30)
@@ -66,23 +68,23 @@ def keywords(**kwargs):
 keywords(name='lee', age=40) #변수명 지정 가능, 맵 형태로 리턴
 
 
-def allkeywords(*args, **kwargs):
+def allKeywords(*args, **kwargs):
     print(args)
     print(kwargs)
 
 #변수명을 지정하면 args에, 변수명을 지정하면 kwargs에 대입됨
-allkeywords(10, 20 ,30, name="kim", age=50) 
+allKeywords(10, 20 ,30, name="kim", age=50)
 
 
-def calc(a, b):
+def calc2(a, b):
     return a+b, a-b, a*b #튜플형 반환
-calc(10,20)
+print(calc2(10,20))
 
 
-def calc(a, b):
+def calc3(a, b):
     return a+b
     return a-b
     return a*b
 
-calc(10, 20)
+print(calc3(10, 20))
 #값을 리턴하면 함수는 종료되므로 a+b값을 리턴하고 이후는 수행하지 않는다.
