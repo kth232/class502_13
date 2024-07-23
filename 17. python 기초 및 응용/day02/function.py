@@ -60,7 +60,6 @@ calc('add', 10, 20, 30)
 calc('null', 10, 20, 30)
 
 
-
 def keywords(**kwargs):
     print(kwargs)
 
@@ -75,9 +74,9 @@ def allKeywords(*args, **kwargs):
 #변수명을 지정하면 args에, 변수명을 지정하면 kwargs에 대입됨
 allKeywords(10, 20 ,30, name="kim", age=50)
 
-
+#함수는 리턴값을 내보내면 종료->연산 중간에 빠져나가기 위해 리턴을 사용하는 경우도 있음
 def calc2(a, b):
-    return a+b, a-b, a*b #튜플형 반환
+    return a+b, a-b, a*b #튜플형 반환, 리턴값은 언제나 하나
 print(calc2(10,20))
 
 
