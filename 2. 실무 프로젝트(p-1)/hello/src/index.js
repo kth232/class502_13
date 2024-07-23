@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root')); //document 객체 동적 추가
 root.render(
   <React.StrictMode>
-    <App />
+    <App /> {/*컴포넌트로 감싸서 설정할 때 사용-App.js에 설정해놓고 적용? */}
   </React.StrictMode>,
 );
 

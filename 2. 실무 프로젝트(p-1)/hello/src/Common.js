@@ -3,6 +3,10 @@ const Common = {
   b: 2,
 };
 
+export function Buttons() {//메인이 되는 컴포넌트를 파일명으로 하는 것이 권장사항
+ return <button>click</button>
+}
+
 export function add(num1, num2) {
     return num1 + num2;
 }

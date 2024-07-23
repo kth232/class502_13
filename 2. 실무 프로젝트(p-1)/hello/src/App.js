@@ -31,12 +31,14 @@ export default App; // 모듈 내보내기
 
 
 
-
-import {fragment} from 'react';
-<fragment></fragment>
+import {fragment} from 'react'; //모듈 가져오기, fragment는 생략 가능
+<fragment></fragment> //외부에 태그 노출 x
 */
 
+import Common from './Common'; //태그 형태로 사용 가능
+
 const App = () => {
+  //App = 함수형 컴포넌트
   const name = 'js';
   const style = {
     backgroundColor: 'orange',
@@ -45,8 +47,19 @@ const App = () => {
   };
   return (
     <>
+      {' '}
+      {/*fragment 태그 축약형*/}
       {/* 주석은 이렇게.. //는 줄 개행 필수 */}
+      <>
+        {name && <h1>hi, {name}</h1>} {/*이름이 있는 경우 text 출력*/}
+        <h2>welcome</h2>
+      </>
+      <common>Buttons</common> {/*buttons을 어떻게 꺼내오는가?*/}
+
+
       <div className="subject" style={style}>
+        {' '}
+        {/* 자바스크립트 표현식 {} */}
         first component!
       </div>
       <div style={{ color: 'blue' }}>second {name && name}!</div>
