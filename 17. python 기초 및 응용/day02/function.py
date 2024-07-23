@@ -88,12 +88,13 @@ def calc3(a, b):
 print(calc3(10, 20))
 #값을 리턴하면 함수는 종료되므로 a+b값을 리턴하고 이후는 수행하지 않는다.
 
+
 a = 10 #전역 변수 a
-def add(): #지역변수 a
+def add4(): #지역변수 a
     global a #전역변수 직접 접근, 순수하지 못한 함수->외부에 영향을 받기 때문
     a += 1
 
-add()
+add4()
 print(a)
 
 #람다식
@@ -106,5 +107,39 @@ nums2 = list(map(square, nums))
 print(nums2)
 '''
 
-nums2 = list(map(lambda a: a * a, nums));
+nums2 = list(map(lambda a: a * a, nums))
 print(nums2)
+
+
+add5 = lambda a, b: a+b
+add5(10, 20)
+
+#중첩함수
+def add(num1):
+    def add2(num2):
+
+        return num1 + num2
+    return add2
+
+add10 = add(10)
+print(add10(20)) #내부 값이 살아있음
+
+#데코레이터 패턴
+def elapsed(func):
+    def wrapper():
+        #공통 처리 부분
+         result = func() #핵심 기능
+        #공통 처리 부분
+
+        return result
+
+    return wrapper
+
+
+def factorial(num): #재귀함수로 팩토리얼 함수 구현
+    if num < 1:
+        return 1
+
+    return num * factorial(num-1)
+
+print(factorial(6))
