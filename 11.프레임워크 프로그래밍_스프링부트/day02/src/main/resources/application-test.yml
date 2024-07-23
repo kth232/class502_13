@@ -1,0 +1,32 @@
+#test DB 설정
+#들여쓰기로 구분, 라인 맞춰줘야 같은 하위 속성으로 인식함
+# 다른 설정이라면 들여쓰기 제거해야 함, 아니면 위 설정의 하위 속성으로 인식함
+spring:
+  #데이터베이스 설정, 어떤 DB를 사용할 건지 알려줘야 함
+  datasource:
+    driverClassName: org.h2.Driver #테스트용으로 h2 드라이버 사용(in memory 기반), 오라클과 다른 sql문 사용
+    #'-'가 들어있는 경우 카멜케이스 방식으로도 작성 가능(driver-class-name), properties는 '-'로만 작성해야 함
+    url: jdbc:h2:mem:test
+    userName: sa #환경 변수로 대체
+    password: #비번 없이 접근 가능
+
+  #JPA 설정, sql 설정을 알려줘야 형식에 맞게 sql문 작성 가능
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true #실행하는 SQL을 콘솔에 출력
+        format_sql: true #실행되는 SQL의 들여쓰기 및 줄 개행
+        use_sql_comments: true #jpa가 쿼리를 만들어주는데 주석도 같이 만들어줌
+        #dialect: org.hibernate.dialect.OracleDialect #방언처럼 다른 DB간의 차이를 인식함
+        #최근 것은 dialect 명시 없어도 드라이버를 보고 알아서 인식함, 옛날 거는 버전, 드라이버 등 명시해줘야 함
+    
+    hibernate:
+      ddlAuto: create #ddl-auto: 데이터 정의어(Data Definition Language) 자동화->클래스에 작성하면 테이블 등 자동 생성해줌
+      #create: 실행할 때마다 기존 테이블을 드롭하고 새로 테이블 생성, update: 수정사항만 반영, 배포 시는 none: 변경 x
+
+#로거 설정
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
