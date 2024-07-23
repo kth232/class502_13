@@ -71,7 +71,7 @@ def allKeywords(*args, **kwargs):
     print(args)
     print(kwargs)
 
-#변수명을 지정하면 args에, 변수명을 지정하면 kwargs에 대입됨
+#변수명을 지정하지 않으면 args에, 변수명을 지정하면 kwargs에 대입됨, 튜플형으로 반환
 allKeywords(10, 20 ,30, name="kim", age=50)
 
 #함수는 리턴값을 내보내면 종료->연산 중간에 빠져나가기 위해 리턴을 사용하는 경우도 있음
@@ -87,3 +87,24 @@ def calc3(a, b):
 
 print(calc3(10, 20))
 #값을 리턴하면 함수는 종료되므로 a+b값을 리턴하고 이후는 수행하지 않는다.
+
+a = 10 #전역 변수 a
+def add(): #지역변수 a
+    global a #전역변수 직접 접근, 순수하지 못한 함수->외부에 영향을 받기 때문
+    a += 1
+
+add()
+print(a)
+
+#람다식
+nums = [i for i in range(1, 11)]
+'''
+def square(num): #제곱하는 함수
+    return num * num
+
+nums2 = list(map(square, nums))
+print(nums2)
+'''
+
+nums2 = list(map(lambda a: a * a, nums));
+print(nums2)
