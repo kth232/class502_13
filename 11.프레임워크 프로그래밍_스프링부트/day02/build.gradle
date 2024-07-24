@@ -36,6 +36,10 @@ dependencies {
 	annotationProcessor 'jakarta.annotation:jakarta.annotation-api' //추가, 애노테이션 기반
 	annotationProcessor 'jakarta.persistence:jakarta.persistence-api' //추가
 
+	//5.0.0버전은 기본적으로 javax로 패키지 인식-> :jakarta 추가해서 패키지를 자카르타로 인식시킴
+	implementation 'com.querydsl:querydsl-jpa:5.1.0:jakarta' //querydsl-jpa,
+	annotationProcessor 'com.querydsl:querydsl-apt:5.1.0:jakarta' //querydsl-apt, annotationProcessor로 수정
+
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -43,4 +47,20 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+//변수 정의, 쿼리 파일 경로 설정
+def querydslDir = layout.buildDirectory.dir("generated/querydsl").get().asFile
+
+//소스 코드 세팅
+sourceSets {
+	main.java.srcDirs += [querydslDir]
+}
+
+tasks.withType(JavaCompile) {
+	options.getGeneratedSourceOutputDirectory().set(file(querydslDir))
+}
+
+clean.doLast {
+	file(querydslDir).deleteDir()
 }
