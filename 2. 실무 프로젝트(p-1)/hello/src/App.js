@@ -34,7 +34,7 @@ export default App; // 모듈 내보내기
 import {fragment} from 'react'; //모듈 가져오기, fragment는 생략 가능
 <fragment></fragment> //외부에 태그 노출 x
 */
-
+import React from 'react'; //리액트 서버 버전 오류를 없애기 위함(윈도우는 문제 없음)
 import Common from './Common'; //태그 형태로 사용 가능
 
 const App = () => {
@@ -54,7 +54,7 @@ const App = () => {
         {name && <h1>hi, {name}</h1>} {/*이름이 있는 경우 text 출력*/}
         <h2>welcome</h2>
       </>
-      <common>Buttons</common> {/*buttons을 어떻게 꺼내오는가?*/}
+      <common>Buttons</common> {/*화면 하나하나가 컴포넌트*/}
 
 
       <div className="subject" style={style}>
