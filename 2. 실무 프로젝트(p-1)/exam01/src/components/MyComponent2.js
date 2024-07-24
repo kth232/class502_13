@@ -25,15 +25,17 @@ class MyComponent extends Component { //component 상속
       background: props1.color
     };
 
-    const { name, num, children } = this.props; //비구조화 할당, 변수로 분해해서 사용 가능
+    const { name, num, children:c } = this.props; //비구조화 할당, 변수로 분해해서 사용 가능
+    //children은 리액트에서 정해준 거라 바꿀 순 없지만 비구조화 할당을 이용해 변수로 지정해서 사용 가능
+
     return (
       <>
         <div>{props1.title}</div>
         <div>Hello, I'm {name}.</div>
         <div>My favorite number is {num}.</div>
-        {children} {/*컴포넌트 안쪽 값은 children 속성으로 들어옴 */}
+        {c} {/*컴포넌트 안쪽 값은 children 속성으로 들어옴 */}
 
-        <button id="bttn" style= {styles}>{children}(click)</button>
+        <button id="bttn" style= {styles}>{c}(click)</button> {/*별칭으로 사용 가능*/}
       </>
     );
   }
