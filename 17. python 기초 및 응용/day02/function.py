@@ -124,22 +124,36 @@ def add(num1):
 add10 = add(10)
 print(add10(20)) #내부 값이 살아있음
 
+
+import time #시간 측정 내장 모듈
+
 #데코레이터 패턴
 def elapsed(func):
-    def wrapper():
+    def wrapper(*args, **kwargs): #매개변수가 들어올 수도 있고 없을 수도 있다, 가변 인수 사용
         #공통 처리 부분
-         result = func() #핵심 기능
+        start = time.time()
+        result = func(*args, **kwargs) #핵심 기능
         #공통 처리 부분
+        end = time.time()
 
+        print("소요 시간: %f" % (end-start))
         return result
+    return wrapper #래퍼 함수 반환
 
-    return wrapper
-
-
+@elapsed #데코레이터 함수 적용
 def factorial(num): #재귀함수로 팩토리얼 함수 구현
     if num < 1:
         return 1
 
     return num * factorial(num-1)
 
-print(factorial(6))
+print(factorial(6)) #매개변수 num 들어감
+
+@elapsed #애노테이션으로 감싸서 데코레이터 함수 적용
+def myfunc():
+    print("실행")
+
+myfunc()
+
+# decoratedMyFunc = elapsed(myfunc())
+# decoratedMyFunc() #함수 호출
