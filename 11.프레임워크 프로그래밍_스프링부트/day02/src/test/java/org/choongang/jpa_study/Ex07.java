@@ -49,6 +49,8 @@ public class Ex07 {
         members.forEach(System.out::println);
     }
 
+    //테스트 코드가 꼬이기 때문에 전체 테스트 돌리면 2, 3번 테스트는 실패함
+    //->하나씩 테스트하면 성공
     @Test
     @DisplayName("booleanBuilder 사용")
     void test02() {

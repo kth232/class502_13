@@ -30,6 +30,4 @@ public interface MemberRepository extends JpaRepository<Member, Long>, QuerydslP
     List<Member> getMembers(@Param("k1") String key1, @Param("k2") String key2);
     //문법상 오류가 있어도 실행해봐야 알 수 있음, 오류를 잘 알려주지 않음, 쿼리 직접 입력하는 것 지양
     //쿼리 빌딩 시 조회가 주 목적
-
-
 }

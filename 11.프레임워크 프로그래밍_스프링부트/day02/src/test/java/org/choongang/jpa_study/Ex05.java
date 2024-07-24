@@ -4,6 +4,7 @@ import org.choongang.member.constants.Authority;
 import org.choongang.member.entities.Member;
 import org.choongang.member.repositories.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,6 +54,7 @@ public class Ex05 {
     }
     
     @Test
+    @DisplayName("repository 사용")
     void test01() {
         Member member = memberRepository.findById(1l).orElse(null); //기본키로 조회
         System.out.println(member);
@@ -68,6 +70,7 @@ public class Ex05 {
     }
 
     @Test
+    @DisplayName("repository 사용2")
     void test02() {
         List<Member> members = memberRepository.findAll(); //전체 데이터 조회, 영속 상태이기 때문에 변화 감지됨
         members.forEach(System.out::println);
