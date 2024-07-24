@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
+import React from 'react'; 
+
+export const objA = {a:10}; //모듈 2가지 한번에 내보내기
+export const objB = {b:20};
+
+
 const MyComponent = ({ name, num, children }) => {
-  return (
+  return ( 
     <>
       <div>Hello, I'm {name}.</div>
       <div>My favorite number is {num}.</div>
@@ -17,4 +23,4 @@ MyComponent.propTypes = {
   name: PropTypes.string,
   num: PropTypes.number.isRequired,
 };
-export default MyComponent;
+export default MyComponent; //모듈 1개만 내보내기 가능
