@@ -1,6 +1,6 @@
 import { useState, useRef, React } from 'react';
 
-const Counter = () => {
+const Counter = () => { //화살표 함수
   let num = useRef(10); //페이지 새로고침할 때마다 함수 재호출, 기본 값으로 초기화됨
   console.log('rendering', ', num: ', num);
   const [number, setNumber] = useState(0);
