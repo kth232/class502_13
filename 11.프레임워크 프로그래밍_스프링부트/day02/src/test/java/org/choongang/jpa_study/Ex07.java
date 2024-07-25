@@ -38,7 +38,7 @@ public class Ex07 {
     }
 
     @Test
-    @DisplayName("queryDsl 사용")
+    @DisplayName("querydsl 사용")
     void test01() {
         QMember member = QMember.member;
         //판별식, 조건식=where절
