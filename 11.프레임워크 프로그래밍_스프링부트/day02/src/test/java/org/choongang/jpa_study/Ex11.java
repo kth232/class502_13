@@ -44,7 +44,7 @@ public class Ex11 { //오라클 DB에 실제로 값 들어가는 것 확인->tes
             .mapToObj(i->BoardData.builder()
                     .subject("title" + i)
                     .content("content" + i)
-                    .tags(tags) //태그를 먼저 등록하고 포함해서 게시글을 등록해야 외래키 넣어짐
+                    //.tags(tags) //태그를 먼저 등록하고 포함해서 게시글을 등록해야 외래키 넣어짐
                     .build()).toList();
 
     boardDataRepository.saveAllAndFlush(items);
@@ -57,15 +57,16 @@ public class Ex11 { //오라클 DB에 실제로 값 들어가는 것 확인->tes
     void test01() {
         BoardData items = boardDataRepository.findById(1L).orElse(null);
 
-        List<HashTag> tags = items.getTags();
-        tags.forEach(System.out::println);
+//        List<HashTag> tags = items.getTags();
+//        tags.forEach(System.out::println);
     }
     
     @Test
     @DisplayName("manyToMany 테스트_태그->게시글")
     void test02() {
         HashTag tag = hashTagRepository.findById("tag2").orElse(null);
-        List<BoardData> items = tag.getItems(); //태그에서 게시글 정보 가져오긴
-        items.forEach(System.out::println);
+
+//        List<BoardData> items = tag.getItems(); //태그에서 게시글 정보 가져오긴
+//        items.forEach(System.out::println);
     }
 }

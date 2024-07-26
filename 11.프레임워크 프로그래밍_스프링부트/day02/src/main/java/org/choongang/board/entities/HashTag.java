@@ -15,7 +15,7 @@ public class HashTag {
     @Id
     private String tag;
 
-    @ToString.Exclude //태그의 게시글 배제
-    @ManyToMany(mappedBy = "tags")
-    private List<BoardData> items;
+//    @ToString.Exclude //태그의 게시글 배제
+//    @ManyToMany(mappedBy = "tags")
+//    private List<BoardData> items;
 }

@@ -21,10 +21,13 @@ spring:
         use_sql_comments: true #jpa가 쿼리를 만들어주는데 주석도 같이 만들어줌
         #dialect: org.hibernate.dialect.OracleDialect #방언처럼 다른 DB간의 차이를 인식함
         #최근 것은 dialect 명시 없어도 드라이버를 보고 알아서 인식함, 옛날 거는 버전, 드라이버 등 명시해줘야 함
-
+        default_batch_fetch_size: 100 #100개씩 끊어서 조회->일괄처리 시 메모리 부족 현상 방지
+        
     hibernate:
       ddlAuto: create #ddl-auto: 데이터 정의어(Data Definition Language) 자동화->클래스에 작성하면 테이블 등 자동 생성해줌
       #create: 실행할 때마다 기존 테이블을 드롭하고 새로 테이블 생성, update: 수정사항만 반영, 배포 시는 none: 변경 x
+  
+
 
 #로거 설정, 쿼리에 물음표로 출력되는 바인드 파라미터 출력
 #logging:

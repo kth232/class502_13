@@ -1,10 +1,15 @@
 package org.choongang.jpa_study;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple; //튜플은 querydsl 패키지 사용
+import com.querydsl.core.types.Order;
+import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.aspectj.weaver.ast.Or;
 import org.choongang.board.entities.BoardData;
 import org.choongang.board.entities.HashTag;
 import org.choongang.board.entities.QBoardData;
@@ -120,10 +125,54 @@ public class Ex12 {
     }
 
     @Test
+    @DisplayName("JPAquery_통계관련 기능 연습")
     void test06() {
         QBoardData boardData = QBoardData.boardData;
-        JPAQuery<Long> query = queryFactory.select(boardData.seq.sum())
+        JPAQuery<Long> query = queryFactory.select(boardData.seq.sum()) //순번 합계 구하기
                 .from(boardData);
+
+        long sum = query.fetchOne(); //값이 1개만 있을 때 사용
+        System.out.println(sum);
     }
-    
+
+    @Test
+    @DisplayName("booleanBuilder로 조건 추가")
+    void test07() {
+        QBoardData boardData = QBoardData.boardData;
+
+        BooleanBuilder andBuilder = new BooleanBuilder(); //and빋러
+        andBuilder.and(boardData.subject.contains("title"))
+                .and(boardData.member.email.eq("user01@test.org"));
+
+        /*
+        //or빌더->조건이 꼬일 수 있기 때문에 and빌더 내부에 포함시키는 것이 좋다
+        BooleanBuilder orBuilder = new BooleanBuilder(); 
+        orBuilder.or(boardData.seq.eq(2L))
+                .or(boardData.seq.eq(3L))
+                .or(boardData.seq.eq(4L));
+
+        andBuilder.and(orBuilder); //in 조건을 사욯하는 것이 더 좋지만 or빌더 연습용으로 작성함
+        */
+        
+        PathBuilder<BoardData> pathBuilder = new PathBuilder<>(BoardData.class, "boardData"); 
+        //class 클래스로 정보 확인->reflectioin api 사용
+        
+        
+
+        JPAQuery<BoardData> query = queryFactory.selectFrom(boardData) //selectForm->영속상태로 데이터 가져옴
+                .leftJoin(boardData.member)
+                .fetchJoin()
+                .where(andBuilder) //빌더를 통해 조건 추가
+                .offset(3) //조회 시작 레코드 위치, 3번 행부터 조회 시작
+                .limit(3) //출력 개수 제한=3개 레코드로 한정
+                .orderBy(
+                        new OrderSpecifier(Order.DESC, pathBuilder.get("createdAt")), //comparable: 기본 정렬 기준, 정렬 순서는 enum 상수 사용
+                        new OrderSpecifier(Order.ASC, pathBuilder.get("subject"))
+                ); //정렬, pathBuilder를 통해 만든 정렬 조건 사용
+                //.where(boardData.seq.in(2L, 3L, 4L)); //반환값=booleanExpression-Predicate 구현 클래스
+                //or빌더보다 in연산자가 더 효울적이다
+
+        List<BoardData> items = query.fetch(); //리스트형태의 데이터 가져오기
+        items.forEach(System.out::println);
+    }
 }

@@ -33,8 +33,8 @@ public class BoardData extends BaseEntity { //Many쪽 테이블
     @Lob //clob으로 추가됨
     private String content;
 
-    @ManyToMany //manyToMany는 중간 테이블이 생성되기 때문에 외래키 생성 안됨
-    private List<HashTag> tags; //하나의 게시글에 여러 태그가 올 수 있기 때문에 list형
+//    @ManyToMany //manyToMany는 중간 테이블이 생성되기 때문에 외래키 생성 안됨
+//    private List<HashTag> tags; //하나의 게시글에 여러 태그가 올 수 있기 때문에 list형
     //관계의 주인이 존재해야만 관계 매핑 가능
     //데이터의 중요도를 따졌을 때 게시글을 관계의 주인으로 만듦
 }
