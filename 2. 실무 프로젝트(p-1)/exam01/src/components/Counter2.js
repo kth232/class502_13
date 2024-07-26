@@ -12,9 +12,9 @@ class Counter extends Component { //클래스형 컴포넌트
     const { number } = this.state; //비구조화 할당
     console.log('호출!', this.state);
 
-    const plus = () => this.setState({ number: number + 1 });
+    const plus = () => this.setState({ number: number + 1 }); //값만 바껴도 갱신해줘서 이벤트 처리 간편함
     const minus = () => this.setState({ number: number - 1 }); //this는 Counter가 만든 객체
-    //this.state.number--
+    //this.state.number-- //값이 바뀌더라도 랜더링 안됨->객체 주소가 같기 때문
     //const number = this.state.number;
 
     return (
@@ -29,8 +29,8 @@ class Counter extends Component { //클래스형 컴포넌트
         </button>
 
                 
-          {/*setState에 함수 객체 자체의 값을 넣어줘야 함 */}
-          {/*
+        {/*setState에 함수 객체 자체의 값을 넣어줘야 함 */}
+        {/*
         <button type="button" onClick={()=>this.setState(--this.state.number)}> 
           not act
         </button>
@@ -38,7 +38,14 @@ class Counter extends Component { //클래스형 컴포넌트
         <button type="button" onClick={()=>this.setState({number:number +1})}> 
           not act2
         </button>
-          */}
+
+
+        <button type="button" onClick={()=>this.setState(prevState =>({...prevState, num: number + 1}))}> 
+          functional
+        </button>
+         */}
+        {/*함수형태로 작성 가능, 첫번째 매개변수가 이전 상태값
+        객체를 내보낼 땐 소괄호로 감싸야 함, 중괄호만 있으면 수행 코드로 인식*/}
       </>
     );
   }
