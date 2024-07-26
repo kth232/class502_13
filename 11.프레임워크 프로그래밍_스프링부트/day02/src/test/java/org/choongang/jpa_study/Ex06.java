@@ -55,8 +55,10 @@ public class Ex06 {
     @Test
     @DisplayName("Pageable 사용") //테스트 결과에 설정한 이름으로 출력하기
     void test03() {
-        Pageable pageable = PageRequest.of(0, 3); //0번부터 3개씩 꺼냄
+        Pageable pageable = PageRequest.of(0, 3); //0번부터 3개씩 꺼냄, PageRequest=pageable 인터페이스의 구현 객체
         Page<Member> data = memberRepository.findByEmailContaining("ser", pageable);
+        //QuerydslPredicateExecutor 인터페이스에 정의한 findByEmailContaining 사용
+        //-> 조건에 맞는 데이터를 Page 객체로 받아온다
 
         List<Member> items = data.getContent(); //조회된 데이터 가져오기
         long total = data.getTotalElements(); //전체 데이터 개수

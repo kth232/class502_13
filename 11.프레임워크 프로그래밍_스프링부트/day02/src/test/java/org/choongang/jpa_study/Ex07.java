@@ -41,7 +41,7 @@ public class Ex07 {
     @DisplayName("querydsl 사용")
     void test01() {
         QMember member = QMember.member;
-        //판별식, 조건식=where절
+        //판별식, 조건식=where절, where절에 다중 파라미터 사용->메서드 조합 가능
         BooleanExpression c1 = member.userName.contains("ser");
 
         List<Member> members = (List<Member>) memberRepository.findAll(c1); //형변환
@@ -54,6 +54,7 @@ public class Ex07 {
     @Test
     @DisplayName("booleanBuilder 사용")
     void test02() {
+
         String key = "ser";
         QMember member = QMember.member;
         BooleanBuilder andBuilder = new BooleanBuilder();//and조건으로 자동 완성, 메서드 체이닝 의도
