@@ -3,6 +3,7 @@ package org.choongang.member.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import org.choongang.board.entities.BoardData;
+import org.choongang.global.entities.BaseEntity;
 import org.choongang.member.constants.Authority;
 import org.hibernate.annotations.BatchSize;
 

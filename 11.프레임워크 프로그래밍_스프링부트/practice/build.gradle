@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.2'
-	id 'io.spring.dependency-management' version '1.1.6'
+	id 'io.spring.dependency-management' version '1.1.6' //버전 통일하기 위해 미리 지정됨
 }
 
 group = 'org.choongang'
@@ -25,31 +25,23 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	testRuntimeOnly 'com.h2database:h2'
+	testRuntimeOnly 'com.h2database:h2' //testRuntimeOnly로 수정->테스트할 때만 사용
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+
+	annotationProcessor 'jakarta.annotation:jakarta.annotation-api' //추가, 애노테이션 기반
+	annotationProcessor 'jakarta.persistence:jakarta.persistence-api' //추가
+
+	//5.0.0버전은 기본적으로 javax로 패키지 인식-> :jakarta 추가해서 패키지를 자카르타로 인식시킴
+	implementation 'com.querydsl:querydsl-jpa:5.1.0:jakarta' //querydsl-jpa,
+	annotationProcessor 'com.querydsl:querydsl-apt:5.1.0:jakarta' //querydsl-apt, annotationProcessor로 수정
+
 	annotationProcessor 'org.projectlombok:lombok'
-
-	implementation 'org.modelmapper:modelmapper:3.2.1'
-
-	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.3.0'
-
-	implementation 'com.querydsl:querydsl-apt:5.1.0'
-	implementation 'com.querydsl:querydsl-jpa:5.1.0'
-
-	annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
-	//5버전은 javax가 기본 패키지
-	annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
-	//javax->jakarta로 패키지 호환하기 위해 추가
-
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
@@ -57,10 +49,12 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+//변수 정의, 쿼리 파일 경로 설정
 def querydslDir = layout.buildDirectory.dir("generated/querydsl").get().asFile
 
+//소스 코드 세팅
 sourceSets {
-	main.java.srcDirs += [ querydslDir ]
+	main.java.srcDirs += [querydslDir]
 }
 
 tasks.withType(JavaCompile) {
