@@ -24,7 +24,7 @@ public class MemberTest {
 
     @BeforeEach
     void init() {
-        List<Member> members = IntStream.rangeClosed(1, 6)
+        List<Member> members = IntStream.rangeClosed(1, 5)
                 .mapToObj(i -> Member.builder()
                         .email("user" + i + "@test.org")
                         .password("12345678")
@@ -36,14 +36,14 @@ public class MemberTest {
     }
 
     @Test
-    @DisplayName("이메일로 조회")
+    @DisplayName("이메일로 회원 조회")
     void test1() {
         Member member = memberRepository.findByEmail("user2@test.org");
         System.out.println(member);
     }
 
     @Test
-    @DisplayName("수정")
+    @DisplayName("회원 수정")
     void test2() {
         Member member = memberRepository.findById(1L).orElse(null);
         System.out.println(member);
@@ -51,12 +51,12 @@ public class MemberTest {
         member.setUserName("(mod)user01");
         memberRepository.saveAndFlush(member);
 
-        List<Member> members = memberRepository.findAll();
+        List<Member> members = memberRepository.findAll(); //전체 회원 조회
         members.forEach(System.out::println);
     }
 
     @Test
-    @DisplayName("삭제")
+    @DisplayName("회원 삭제")
     void test3() {
         Member member2 = memberRepository.findById(1L).orElse(null);
         System.out.println(member2);

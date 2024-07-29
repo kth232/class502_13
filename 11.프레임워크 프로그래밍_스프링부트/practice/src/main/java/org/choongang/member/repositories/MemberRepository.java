@@ -1,6 +1,7 @@
 package org.choongang.member.repositories;
 
 import org.choongang.member.entities.Member;
+import org.choongang.member.entities.QMember;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,12 +23,10 @@ public interface MemberRepository extends JpaRepository<Member, Long>, QuerydslP
     //쿼리 메서드의 매개변수로 pageable, 정렬 추가 가능
     //pageable을 사용하면 반환값 page 타입으로 사용해야 함
 
-    List<Member> findByEmailContainingAndUserNameContainingOrderByCreatedAtDesc(String key1, String key2);
-    //조건이 많아지면 메서드명 길어짐
 
-    //쿼리 애노테이션
-    @Query("SELECT m FROM Member m WHERE m.email LIKE :k1 AND m.userName LIKE :k2 ORDER BY m.createdAt DESC") //전체 조회 시에만 영속 상태가 됨
-    List<Member> getMembers(@Param("k1") String key1, @Param("k2") String key2);
-    //문법상 오류가 있어도 실행해봐야 알 수 있음, 오류를 잘 알려주지 않음, 쿼리 직접 입력하는 것 지양
-    //쿼리 빌딩 시 조회가 주 목적
+    default boolean exists(String email) {
+        QMember member = QMember.member;
+
+        return exists(member.email.eq(email));
+    }
 }

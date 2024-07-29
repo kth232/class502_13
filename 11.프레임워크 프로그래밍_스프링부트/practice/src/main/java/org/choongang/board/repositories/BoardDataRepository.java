@@ -10,10 +10,10 @@ import java.util.List;
 
 public interface BoardDataRepository extends JpaRepository<BoardData, Long>, QuerydslPredicateExecutor {
     //인터페이스로 만들어야 함, 자바 표준 프록시 인터페이스로 알아서 구현체 생성해줌
-    //querydsl 사용하기 위해 QuerydslPredicateExecutor 상속, 쿼리 빌더로 오타 방지
+    //querydsl 사용하기 위해 QuerydslPredicateExecutor 상속->쿼리 빌더로 오타 방지
     //predicate 매개변수로 조건식 다양하게 사용 가능
 
-    //fetch 조인 = 즉시 조인
+    //fetch 조인 = 지연 조인->즉시 조인
     @Query("SELECT b FROM BoardData b LEFT JOIN FETCH b.member") //직접 쿼리 작성 시 오타 문제 가능성
     List<BoardData> getAllList();
 

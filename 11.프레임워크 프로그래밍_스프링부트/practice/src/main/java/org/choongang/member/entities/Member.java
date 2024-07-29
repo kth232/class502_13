@@ -27,7 +27,7 @@ public class Member extends BaseEntity { //기본 엔티티명, 테이블명은 
     @Column(length = 65, nullable = false) //필수 항목 설정
     private String password;
 
-    @Column(name = "name", nullable = false, length = 40) //테이블 컬럼명 지정
+    @Column(nullable = false, length = 40) //테이블 컬럼명 지정
     private String userName; //엔티티명은 userName
 
     @Column(length = 10) //문자열 길이 설정

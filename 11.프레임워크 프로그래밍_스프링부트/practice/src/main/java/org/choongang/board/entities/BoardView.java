@@ -7,6 +7,6 @@ import lombok.Data;
 @Entity
 public class BoardView {
 
-    @EmbeddedId
+    @EmbeddedId //키 클래스를 기본키로 사용함 선언
     private BoardViewId id;
 }
