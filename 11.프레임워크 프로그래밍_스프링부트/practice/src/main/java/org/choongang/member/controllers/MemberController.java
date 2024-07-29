@@ -60,6 +60,6 @@ public class MemberController {
         loginService.showInfo(form);
         System.out.println(form);
 
-        return "redirect:/board/list";
+        return "redirect:/board/write";
     }
 }
