@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.choongang.board.controllers.RequestBoard;
 import org.choongang.board.entities.BoardData;
 import org.choongang.board.repositories.BoardDataRepository;
+import org.choongang.member.entities.Member;
+import org.choongang.member.repositories.MemberRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class WriteService {
 
+    private final MemberRepository memberRepository;
     private final BoardDataRepository boardDataRepository;
 
     public void write(RequestBoard form) {
         BoardData boardData = new ModelMapper().map(form, BoardData.class);
+        //Member memberSeq = memberRepository.findAllById();
+        //멤버 테이블과 조인해서 mSeq를 같이 저장하고 싶다..
 
         boardDataRepository.save(boardData);
         boardDataRepository.flush();

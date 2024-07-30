@@ -58,7 +58,6 @@ public class MemberController {
             return "front/member/login";
         }
         loginService.showInfo(form);
-        System.out.println(form);
 
         return "redirect:/board/write";
     }

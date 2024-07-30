@@ -1,4 +1,4 @@
-package org.choongang.jpa_practice;
+package org.choongang.jpa_test;
 
 import jakarta.transaction.Transactional;
 import org.choongang.member.constants.Authority;

@@ -1,10 +1,7 @@
-package org.choongang.jpa_practice;
+package org.choongang.jpa_test;
 
 import org.choongang.board.entities.BoardData;
 import org.choongang.board.repositories.BoardDataRepository;
-import org.choongang.member.constants.Authority;
-import org.choongang.member.entities.Member;
-import org.choongang.member.repositories.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

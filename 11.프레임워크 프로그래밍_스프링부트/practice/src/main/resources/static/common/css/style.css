@@ -6,3 +6,7 @@
     height: 40px;
     width: 50px;
 }
+.dl {
+    display: flex;
+    align-items: center;
+}
