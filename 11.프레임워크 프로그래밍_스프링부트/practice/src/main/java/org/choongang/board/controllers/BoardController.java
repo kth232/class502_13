@@ -66,5 +66,4 @@ public class BoardController {
 
         return "front/board/view";
     }
-
 }

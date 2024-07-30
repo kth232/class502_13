@@ -13,22 +13,18 @@
                 <th th:text="#{번호}"></th>
                 <th th:text="#{제목}"></th>
                 <th th:text="#{내용}"></th>
+                <th th:text="#{작성자}"></th>
                 <th th:text="#{작성일}"></th>
-                <th></th>
+               <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="item: ${boardData}">
-                <td th:text="${item.seq}"></td>
-                <td th:text="${item.subject}"></td>
-                <td th:text="${item.content}"></td>
-                <td th:text="${item.getCreatedAt().format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm'))}"></td>
-                <td>
-                    <div class="buttons">
-                        <button type="button" th:text="#{수정하기}"></button>
-                        <button type="button" th:text="#{삭제하기}" th:href="@{/board/delete/{seq}(seq=*{item.seq})}"></button>
-                    </div>
-                </td>
+            <tr th:each="item: ${boardData}" th:object="${item}">
+                <td th:text="*{seq}"></td>
+                <td th:text="*{subject}"></td>
+                <td th:text="*{content}"></td>
+                <td th:text="*{member == null ? '' : #strings.concat(member.userName, '(', member.email, ')')}"></td>
+                <td th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
             </tr>
         </tbody>
     </table>
