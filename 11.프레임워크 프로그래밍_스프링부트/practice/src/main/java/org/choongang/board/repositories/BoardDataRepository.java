@@ -21,4 +21,5 @@ public interface BoardDataRepository extends JpaRepository<BoardData, Long>, Que
     //바로 조인할 엔티티 명시, 게시글 속성 중에서 member를 의미(속성명), 배열형으로 입력 시 중괄호로 작성
     @EntityGraph(attributePaths = {"member"})
     List<BoardData> findBySubjectContaining(String key); //쿼리 메서드에 한정해서 사용 가능
+
 }

@@ -1,8 +1,18 @@
 .terms-contents {
     border: gray 1px solid;
+    width: 300px;
 }
 
 .content-box {
     height: 100px;
     width: 200px;
+}
+
+.board-table {
+    border: gray solid 1px;
+}
+
+th, tr, td {
+    border: gray solid 1px;
+
 }

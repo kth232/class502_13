@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ViewService {
+public class InfoService {
 
     private final BoardDataRepository boardDataRepository;
     private BoardData boardData;
