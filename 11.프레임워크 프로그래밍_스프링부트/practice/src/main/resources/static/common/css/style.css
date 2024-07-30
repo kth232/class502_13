@@ -2,10 +2,7 @@
     display: none !important;
 }  /*히든 프레임 보이지 않게 함*/
 
-.textarea {
-    height: 40px;
-    width: 50px;
-}
+
 .dl {
     display: flex;
     align-items: center;

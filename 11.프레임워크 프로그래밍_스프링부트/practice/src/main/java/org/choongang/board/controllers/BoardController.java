@@ -33,9 +33,11 @@ public class BoardController {
 
     @PostMapping("/write")
     public String writePs(@Valid RequestBoard form, Errors errors) {
+        //String mode = form.getSeq() == null ? "update" : "write"; //게시글 번호가 있으면 수정, 없으면 작성
 
         if (errors.hasErrors()) {
             return "front/board/write";
+            //return "front/board" + mode;
         }
 
         writeService.write(form);

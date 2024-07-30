@@ -1,3 +1,8 @@
 .terms-contents {
     border: gray 1px solid;
 }
+
+.content-box {
+    height: 100px;
+    width: 200px;
+}

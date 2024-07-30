@@ -2,6 +2,9 @@ package org.choongang.jpa_test;
 
 import org.choongang.board.entities.BoardData;
 import org.choongang.board.repositories.BoardDataRepository;
+import org.choongang.member.constants.Authority;
+import org.choongang.member.entities.Member;
+import org.choongang.member.repositories.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 @SpringBootTest
 @Transactional
@@ -20,10 +24,29 @@ public class BoardTest {
     @Autowired
     private BoardDataRepository boardDataRepository;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
     @BeforeEach
     void init() {
-        List<BoardData> boards = IntStream.rangeClosed(1, 5)
+
+        Member member = Member.builder()
+                        .email("user@test.org")
+                        .password("12345678")
+                        .userName("user")
+                        .authority(Authority.USER)
+                        .build();
+
+        memberRepository.saveAndFlush(member);
+
+        Member member1 = memberRepository.findById(1L).orElse(null);
+        System.out.println(member1);
+        Long mSeq=member1.getSeq();
+
+        List<BoardData> boards = LongStream.rangeClosed(1, 5)
                 .mapToObj(i -> BoardData.builder()
+                        .seq(i) //게시글 번호
+                        .member(member)
                         .subject("title"+i)
                         .content("content" +i)
                         .build()).toList();

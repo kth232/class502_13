@@ -21,7 +21,7 @@
             <dt th:text="#{내용}"></dt>
             <dd>
 <!--                <input type="text" name="content" th:field="*{content}"/>-->
-                <textarea name="content" th:field="*{content}"></textarea>
+                <textarea name="content" th:field="*{content}" class="content-box"></textarea>
                 <div class="error" th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
             </dd>
         </dl>

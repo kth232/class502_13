@@ -36,10 +36,13 @@ public class MemberTest {
     }
 
     @Test
-    @DisplayName("이메일로 회원 조회")
+    @DisplayName("회원 조회")
     void test1() {
         Member member = memberRepository.findByEmail("user2@test.org");
         System.out.println(member);
+
+        List<Member> member2 = memberRepository.findAll();
+        System.out.println(member2);
     }
 
     @Test

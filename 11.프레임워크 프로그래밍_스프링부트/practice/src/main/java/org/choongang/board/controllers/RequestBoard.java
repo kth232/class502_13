@@ -3,6 +3,8 @@ package org.choongang.board.controllers;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class RequestBoard {
 
@@ -13,4 +15,6 @@ public class RequestBoard {
 
     @NotBlank
     private String content;
+
+    private LocalDateTime createdAt;
 }
