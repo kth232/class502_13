@@ -41,7 +41,6 @@ public class BoardTest {
 
         Member member1 = memberRepository.findById(1L).orElse(null);
         System.out.println(member1);
-        Long mSeq=member1.getSeq();
 
         List<BoardData> boards = LongStream.rangeClosed(1, 5)
                 .mapToObj(i -> BoardData.builder()

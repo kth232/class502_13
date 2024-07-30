@@ -19,9 +19,11 @@ public class WriteService {
     private final BoardDataRepository boardDataRepository;
 
     public void write(RequestBoard form) {
+        Long seq = form.getSeq();
         BoardData boardData = new ModelMapper().map(form, BoardData.class);
-        //Member memberSeq = memberRepository.findAllById();
+        //Member member = memberRepository.findAllById();
         //멤버 테이블과 조인해서 mSeq를 같이 저장하고 싶다..
+        //조회를 해오면 영속성 상태임
 
         boardDataRepository.save(boardData);
         boardDataRepository.flush();
