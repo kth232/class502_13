@@ -25,10 +25,13 @@
                 <td th:text="*{content}"></td>
                 <td th:text="*{member == null ? '' : #strings.concat(member.userName, '(', member.email, ')')}"></td>
                 <td th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                <div class="buttons">
-                    <button type="button" th:text="#{수정하기}"></button>
-                    <a th:href="@{/board/delete/{seq}(seq=*{item.seq})}" onclick="return confirm('정말 삭제하겠습니까');"><button type="button" th:text="#{삭제하기}"></button></a>
-                </div>
+                <td>
+                    <div class="buttons">
+                        <button type="button" th:text="#{수정하기}"></button>
+                        <a th:href="@{/board/delete/{seq}(seq=*{item.seq})}" onclick="return confirm('정말 삭제하겠습니까');">삭제하기</a>
+<!--                        <button type="button" th:text="#{삭제하기}"></button>-->
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
