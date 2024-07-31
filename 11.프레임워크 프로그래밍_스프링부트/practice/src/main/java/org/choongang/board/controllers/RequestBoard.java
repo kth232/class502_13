@@ -17,4 +17,6 @@ public class RequestBoard {
     private String content;
 
     private LocalDateTime createdAt;
+
+    private LocalDateTime modifiedAt;
 }

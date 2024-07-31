@@ -15,6 +15,7 @@
                 <th th:text="#{내용}"></th>
                 <th th:text="#{작성자}"></th>
                 <th th:text="#{작성일}"></th>
+                <th th:text="#{수정일}"></th>
                <th></th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td th:text="*{content}"></td>
                 <td th:text="*{member == null ? '' : #strings.concat(member.userName, '(', member.email, ')')}"></td>
                 <td th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:text="*{#temporals.format(modifiedAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td>
                     <div class="buttons">
                         <a th:href="@{/board/update/{seq}(seq=*{seq})}"><button type="button" th:text="#{수정하기}"></button></a>
