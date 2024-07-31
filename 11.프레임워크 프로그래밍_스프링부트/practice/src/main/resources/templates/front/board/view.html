@@ -27,9 +27,8 @@
                 <td th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td>
                     <div class="buttons">
-                        <button type="button" th:text="#{수정하기}"></button>
-                        <a th:href="@{/board/delete/{seq}(seq=*{item.seq})}" onclick="return confirm('정말 삭제하겠습니까');">삭제하기</a>
-<!--                        <button type="button" th:text="#{삭제하기}"></button>-->
+                        <a th:href="@{/board/update/{seq}(seq=*{seq})}"><button type="button" th:text="#{수정하기}"></button></a>
+                        <a th:href="@{/board/delete/{seq}(seq=*{seq})}" onclick="return confirm('정말 삭제하겠습니까');"><button type="button" th:text="#{삭제하기}"></button></a>
                     </div>
                 </td>
             </tr>

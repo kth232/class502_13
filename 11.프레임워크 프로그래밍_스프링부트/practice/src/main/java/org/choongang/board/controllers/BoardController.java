@@ -55,6 +55,7 @@ public class BoardController {
 
         deleteService.delete(seq);
 
+
         return "front/board/view";
     }
 

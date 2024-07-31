@@ -20,7 +20,6 @@ public class InfoService {
     private BoardData boardData;
 
     public void view(@ModelAttribute RequestBoard form, Model model) {
-        //boardData data = boardData.getData();
 
         List<BoardData> list = boardDataRepository.findAll();
         model.addAttribute("boardData", list);
