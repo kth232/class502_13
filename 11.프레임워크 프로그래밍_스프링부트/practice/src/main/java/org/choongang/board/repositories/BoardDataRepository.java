@@ -1,6 +1,7 @@
 package org.choongang.board.repositories;
 
 import org.choongang.board.entities.BoardData;
+import org.choongang.member.entities.Member;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,6 @@ public interface BoardDataRepository extends JpaRepository<BoardData, Long>, Que
     @EntityGraph(attributePaths = {"member"})
     List<BoardData> findBySubjectContaining(String key); //쿼리 메서드에 한정해서 사용 가능
 
+    @EntityGraph(attributePaths = "member")
+    Member findByMseq(Long mSeq);
 }

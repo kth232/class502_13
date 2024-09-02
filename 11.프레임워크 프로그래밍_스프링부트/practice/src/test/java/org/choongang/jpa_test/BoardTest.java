@@ -14,7 +14,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 @SpringBootTest
@@ -38,9 +37,6 @@ public class BoardTest {
                         .build();
 
         memberRepository.saveAndFlush(member);
-
-        Member member1 = memberRepository.findById(1L).orElse(null);
-        System.out.println(member1);
 
         List<BoardData> boards = LongStream.rangeClosed(1, 5)
                 .mapToObj(i -> BoardData.builder()
@@ -70,6 +66,7 @@ public class BoardTest {
         System.out.println(boardData);
 
         boardData.setSubject("(mod)title01");
+        boardData.setContent("(mod)content01");
         boardDataRepository.saveAndFlush(boardData);
 
         List<BoardData> items = boardDataRepository.findAll();
