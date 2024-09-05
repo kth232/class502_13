@@ -14,20 +14,24 @@ const TodoList = ({ items, onToggle, onRemove }) => {
        * 값 변화로 상태 감지를 해야하고 디자인 상 작업하기 어렵기 때문 */}
       {items &&
         items.length > 0 &&
-        items.map(({ id, done, title }) => (
+        items.map(({ id, done, title, content }) => (
           <li
             key={id}
             onClick={() => {
               onToggle(id);
             }}
           >
-            {done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-            {title}
-            <CiSquareRemove onClick={() => onRemove(id)} />
+            <div>
+              {done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+              {title}
+              <CiSquareRemove onClick={() => onRemove(id)} />
+            </div>
+            {content && <div>{content}</div>}
           </li>
         ))}
     </ul>
   );
 };
 
-export default TodoList;
+//필요한 것만
+export default React.memo(TodoList);
