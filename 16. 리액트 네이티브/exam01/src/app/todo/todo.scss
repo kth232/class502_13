@@ -1,0 +1,17 @@
+$primaryColor: #000; //변수형태로 색상 지정 가능
+
+form {
+    border: 1px solid red;
+    width: 500px;
+    padding: 20px;
+
+    dl {//form 태그 하위 dl 태그 선택
+        display: flex;
+        dl + dl {
+            border-top: 1px dashed #000;
+        }
+    }
+    &:hover { //&: 자기 자신(여기서는 form태그)을 지정
+        border-color: blue;
+    }
+}

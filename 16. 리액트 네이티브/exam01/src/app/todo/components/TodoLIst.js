@@ -1,6 +1,31 @@
 import React from 'react';
 import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md';
 import { CiSquareRemove } from 'react-icons/ci';
+import styled from 'styled-components';
+
+//일반 컴포넌트에 styled-component를 적용할 때 className 꼭 넣어줘야 함
+const ItemBox = ({ item, onToggle, onRemove, className }) => {
+  const { id, title, content, done } = item;
+  return (
+    <li key={id} onClick={() => onToggle(id)} className={className}>
+      <div>
+        {done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        {title}
+        <CiSquareRemove onClick={() => onRemove(id)} />
+      </div>
+      {content && <div>{content}</div>}
+    </li>
+  );
+};
+
+const StyledItemBox = styled(ItemBox)`
+  display: flex;
+  border: 1px solid #000;
+  padding: 10px;
+  & + & {
+    margin-top: 10px;
+  }
+`;
 
 //컨테이너 컴포넌트가 넘겨준 items가 매개변수로 넘어옴
 //데이터 처리는 컨테이너에서 담당
@@ -14,20 +39,13 @@ const TodoList = ({ items, onToggle, onRemove }) => {
        * 값 변화로 상태 감지를 해야하고 디자인 상 작업하기 어렵기 때문 */}
       {items &&
         items.length > 0 &&
-        items.map(({ id, done, title, content }) => (
-          <li
-            key={id}
-            onClick={() => {
-              onToggle(id);
-            }}
-          >
-            <div>
-              {done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-              {title}
-              <CiSquareRemove onClick={() => onRemove(id)} />
-            </div>
-            {content && <div>{content}</div>}
-          </li>
+        items.map((item) => (
+          <StyledItemBox
+            key={item.id}
+            item={item}
+            onToggle={onToggle}
+            onRemove={onRemove}
+          />
         ))}
     </ul>
   );
