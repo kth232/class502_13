@@ -1,6 +1,6 @@
 'use client';
 import React, { useContext } from 'react';
-import UserContext from './userContext';
+import UserContext from './UserContext';
 console.log(UserContext);
 
 //children이 함수형태, 내부에서 호출할 때 값 넘겨줌
