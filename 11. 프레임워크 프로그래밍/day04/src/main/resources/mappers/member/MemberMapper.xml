@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.choongang.member.mappers.MemberMapper">
-    <resultMap id="memberMap" type="org.choongang.member.entities.Member">
+<mapper namespace="mappers.member.MemberMapper">
+    <resultMap id="memberMap" type="member.entities.Member">
         <result column="SEQ" property="seq" />
         <result column="EMAIL" property="email" />
         <result column="PASSWORD" property="password" />
