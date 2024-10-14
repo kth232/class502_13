@@ -27,9 +27,10 @@ public class MemberController {
 
 
     @GetMapping("member/join")
-    public String join(@RequestParam(name = "name", defaultValue = "default") String name) { //@RequestParam 명시해야지만 찾아줌
+    public String join(@RequestParam(name = "name", defaultValue = "default") String name, Model model) { //@RequestParam 명시해야지만 찾아줌
         //requestParam: 요청 데이터 name 값 찾아서 주입, 없을 경우 null 값으로 대체
         //required = false는 기본값을 설정하면 자동으로 세팅됨
+        model.addAttribute("greeting", "welcome, " + name);
         System.out.println("name: "+ name);
 
         return "member/join";
