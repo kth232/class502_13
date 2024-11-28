@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:url var = "actionUrl" value="/member/join" />
 <h1>회원가입</h1>
+<%--JSP 코드에서 모델의 속성 이름을 사용해서 값 접근--%>
 <h2>${greeting}</h2>
 <form method="POST" action="${actionUrl}" autocomplete="off">
     <dl>
