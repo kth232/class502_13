@@ -6,8 +6,20 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration //스프링이 관리할 객체임을 알려주는 애노테이션
-//@ComponentScan(basePackages = "exam01.member") //멤버 패키지를 포함한 하위 범위를 스캔 대상으로 설정
-@ComponentScan("exam01.member")
+//@ComponentScan(basePackages = "exam01.member")
+/*
+@ComponentScan(basePackages = "exam01.member"
+    excludeFilters = @ComponentScan.Filter(type=FilterType.ANNOTATION, classes=ManualBean.class)) //멤버 패키지를 포함한 하위 범위를 스캔 대상으로 설정
+*/
+/*
+@ComponentScan(basePackages = "exam01.member"
+    excludeFilters = @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, classes=MemberDao.class))
+*/
+/*
+@ComponentScan(basePackages = "exam01.member"
+    excludeFilters = @ComponentScan.Filter(type=FilterType.ASPECTJ, pattern="member..*Dao"))
+*/
+@ComponentScan("exam01.member") //스캔 범위 잘 확인하기!
 public class AppCtx3 { //객체 조립기 역할을 대신해주는 스프링
 
     @Bean

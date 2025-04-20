@@ -4,13 +4,16 @@ import exam01.member.controllers.RequestJoin;
 import exam01.member.dao.MemberDao;
 import exam01.member.entities.Member;
 import exam01.member.validators.JoinValidator;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-@Component
-
+//@Component
+@Service
+//@RequiredArgsConstructor
 public class JoinService {
     @Autowired //컨테이너 안에서 객체 찾아서 주입해줌
     private JoinValidator validator;
@@ -19,8 +22,13 @@ public class JoinService {
     @Autowired
     private MemberDao memberDao;
 
+    //@NonNull
+    //private final MemberDao memberDao;
+
     /*
     //의존 관계(생성자)-없으면 객체 생성 불가(필수)
+    //@Autowired를 사용하지 않아도 자동 주입, 스프링 컨테이너가 객체를 관리하려면 객체 생성 필수!
+    //생성자 매개변수가 해결되지 않으면 객체 생성 불가
     public JoinService(JoinValidator validator, MemberDao memberDao) {
         this.validator = validator;
         this.memberDao = memberDao;
