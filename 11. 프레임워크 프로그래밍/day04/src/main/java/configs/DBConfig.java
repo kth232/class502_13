@@ -28,9 +28,9 @@ public class DBConfig {
         /*DB 연결 설정 E*/
 
         /*커넥션 풀 설정 S*/
-        ds.setTestWhileIdle(true); //유휴 객체 유효성 체크
-        ds.setInitialSize(2);
-        ds.setMaxActive(10);
+        ds.setTestWhileIdle(true); //유휴 객체 유효성 체크, SELECT 1 FROM DUAL
+        ds.setInitialSize(2); //처음 로드 시 생성할 커넥션 객체의 개수
+        ds.setMaxActive(10); //최대 활성 커넥션 객체의 개수
         ds.setTimeBetweenEvictionRunsMillis(10 * 1000); //10초에 한번씩 연결 상태 체크
         ds.setMinEvictableIdleTimeMillis(1000 * 60); //유휴 객체 생존 시간 1분->소멸 후 다시 생성됨
         /*커넥션 풀 설정 E*/

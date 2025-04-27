@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
@@ -16,6 +17,7 @@ import java.sql.PreparedStatement;
 @Transactional //수동 관리->프록시, 자동 롤백
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AppCtx.class)
+//@SpringJUnitConfig(AppCtx.class) //컴포넌트 스캔 설정으로 DBConfig 불러올 수 있기 때문에 이것만 해도 가능
 public class Ex01 {
     
     @Autowired
