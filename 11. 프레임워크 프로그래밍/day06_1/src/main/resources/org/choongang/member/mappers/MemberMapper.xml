@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.choongang.member.mappers.MemberMapper">
+    <select id="getList">
+        SELECT * FROM member
+        <where>
+            <if test="skey != null and skey != ''">
+                <bind name = "keyword" value = "'%' + _parameter.getSkey() + '%'" />
+                <if test="sopt == 'email'">
+                    AND email Like #{keyword}
+                </if>
+                <if test="sopt == 'name'">
+                    AND name Like #{keyword}
+                </if>
+                <if test="sopt == 'mobile'">
+                    AND mobile Like #{keyword}
+                </if>
+                <if test="sopt == null">
+                    AND CONCAT(email, name, mobile) LIKE #{keyword}
+                </if>
+            </if>
+            <if test="seq > 0L">
+                <![CDATA[
+                 AND seq >= #{seq}
+               ]]>
+            </if>
+        </where>
+        ORDER BY regDt DESC LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="getList2">
+        SELECT * FROM member
+        <where>
+            <foreach item="item" index="index" collection="list"
+                     open="seq IN (" separator="," close=")" nullable="true">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="get">
+        SELECT * FROM member WHERE email=#{email}
+    </select>
+
+    <insert id="register" useGeneratedKeys="true" keyProperty="seq">
+        INSERT INTO member (email, password, name, mobile, terms)
+        VALUES (#{email}, #{password}, #{name}, #{mobile}, #{terms})
+    </insert>
+
+    <update id="update">
+        UPDATE member
+<!--        SET-->
+<!--        <trim prefix="SET" suffixOverrides=",">-->
+        <set>
+            <if test="password != null">
+                password=#{password},
+            </if>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="mobile != null">
+                mobile=#{mobile},
+            </if>
+<!--        </trim>-->
+        </set>
+<!--        WHERE email=#{email}-->
+        <where>
+            email=#{email}
+        </where>
+    </update>
+
+    <delete id="delete">
+        DELETE FROM member WHERE email=#{email}
+    </delete>
+</mapper>

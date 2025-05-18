@@ -1,4 +1,4 @@
-package org.choongang.global.member.entities;
+package org.choongang.member.entities;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

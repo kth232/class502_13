@@ -1,6 +1,6 @@
-package org.choongang.global.member.repositories;
+package org.choongang.member.repositories;
 
-import org.choongang.global.member.entities.Member;
+import org.choongang.member.entities.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jdbc.repository.query.Query;

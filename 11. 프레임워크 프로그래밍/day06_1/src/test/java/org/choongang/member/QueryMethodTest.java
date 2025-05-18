@@ -1,8 +1,8 @@
 package org.choongang.member;
 
 import org.choongang.global.configs.AppCtx;
-import org.choongang.global.member.entities.Member;
-import org.choongang.global.member.repositories.MemberRepository;
+import org.choongang.member.entities.Member;
+import org.choongang.member.repositories.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
